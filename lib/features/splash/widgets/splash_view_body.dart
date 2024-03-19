@@ -18,7 +18,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     initAnimation();
-    navigateToHome();
+    navigateToLogin();
   }
 
   @override
@@ -48,11 +48,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.forward();
   }
 
-  void navigateToHome() {
+  void navigateToLogin() {
     Future.delayed(
       const Duration(seconds: 2),
       () {
-        GoRouter.of(context).push(AppRouter.kLoginView);
+        GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
       },
     );
   }
