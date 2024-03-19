@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_world/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:knowledge_world/core/utils/app_router.dart';
 
 void main() {
@@ -13,7 +13,8 @@ class KnowledgeWorldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: AppRouter.router,
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+          textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme)),
       debugShowCheckedModeBanner: false,
     );
   }

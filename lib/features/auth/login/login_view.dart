@@ -7,9 +7,11 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: kTheme,
-      child: const LoginViewBody(),
+    return Scaffold(
+      body: Container(
+        decoration: kTheme,
+        child: const LoginViewBody(),
+      ),
     );
   }
 }
