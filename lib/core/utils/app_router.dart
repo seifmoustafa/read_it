@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
-import 'package:read_it/features/auth/login/login_view.dart';
-import 'package:read_it/features/auth/register/register_view.dart';
-import 'package:read_it/features/splash/splash_view.dart';
+import 'package:read_it/features/auth/presentation/views/login/login_view.dart';
+import 'package:read_it/features/auth/presentation/views/register/register_view.dart';
+import 'package:read_it/features/splash/presentation/splash_view.dart';
 
 abstract class AppRouter {
   static const kLoginView = '/loginView';

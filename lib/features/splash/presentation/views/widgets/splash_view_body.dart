@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_it/core/utils/app_router.dart';
-import 'package:read_it/features/splash/widgets/fading_logo.dart';
-import 'package:read_it/features/splash/widgets/slidingtext.dart';
+import 'package:read_it/features/splash/presentation/views/widgets/fading_logo.dart';
+import 'package:read_it/features/splash/presentation/views/widgets/slidingtext.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});

@@ -3,9 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/utils/styles.dart';
-import 'package:read_it/features/auth/widgets/custom_button.dart';
-import 'package:read_it/features/auth/widgets/custom_form_text_field.dart';
-import 'package:read_it/features/auth/widgets/custom_third_party_sign.dart';
+import 'package:read_it/features/auth/presentation/views/widgets/custom_button.dart';
+import 'package:read_it/features/auth/presentation/views/widgets/custom_form_text_field.dart';
+import 'package:read_it/features/auth/presentation/views/widgets/custom_third_party_sign.dart';
 
 class LoginSection extends StatelessWidget {
   const LoginSection({super.key});
