@@ -21,9 +21,6 @@ class RegisterInfoSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SizedBox(
-            height: 30,
-          ),
           CustomFormTextField(
             obscureText: true,
             hintText: 'First Name',
