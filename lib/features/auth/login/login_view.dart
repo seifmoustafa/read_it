@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_world/constants.dart';
-import 'package:knowledge_world/features/auth/login/widgets/login_view_body.dart';
+import 'package:read_it/constants.dart';
+import 'package:read_it/features/auth/login/widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

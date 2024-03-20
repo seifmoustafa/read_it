@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_world/core/utils/styles.dart';
-import 'package:knowledge_world/features/auth/widgets/custom_sing_button.dart';
+import 'package:read_it/core/utils/styles.dart';
+import 'package:read_it/features/auth/widgets/custom_sing_button.dart';
 
 class CustomThirdPartySign extends StatelessWidget {
   const CustomThirdPartySign({super.key});

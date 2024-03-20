@@ -1,4 +1,4 @@
-name: knowledge_world
+name: read_it
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.6
+  firebase_core: ^2.27.1
   flutter:
     sdk: flutter
   go_router: ^13.2.1

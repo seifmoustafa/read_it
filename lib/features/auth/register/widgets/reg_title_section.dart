@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_world/core/utils/app_logo_text.dart';
-import 'package:knowledge_world/core/utils/assets.dart';
-import 'package:knowledge_world/core/utils/styles.dart';
+import 'package:read_it/core/utils/app_logo_text.dart';
+import 'package:read_it/core/utils/assets.dart';
 
 class RegTitleSection extends StatelessWidget {
   const RegTitleSection({super.key});

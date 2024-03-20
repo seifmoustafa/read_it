@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "618927035684",
+    "project_id": "readit-d09b3",
+    "storage_bucket": "readit-d09b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618927035684:android:0ebeec6f18225ba6df0fb1",
+        "android_client_info": {
+          "package_name": "com.example.knowledge_world"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCWfcPLbml_Ae-fL6gNToe6fbcl55Iv1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

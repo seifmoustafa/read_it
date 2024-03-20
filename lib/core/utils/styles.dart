@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_world/constants.dart';
+import 'package:read_it/constants.dart';
 
 abstract class Styles {
   static const textStyle10 = TextStyle(

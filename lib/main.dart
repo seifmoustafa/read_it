@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:knowledge_world/core/utils/app_router.dart';
+import 'package:read_it/core/utils/app_router.dart';
 
 void main() {
   runApp(const KnowledgeWorldApp());

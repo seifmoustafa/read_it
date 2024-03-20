@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_world/core/utils/assets.dart';
+import 'package:read_it/core/utils/assets.dart';
 
 class FadingLogo extends StatelessWidget {
   const FadingLogo({
