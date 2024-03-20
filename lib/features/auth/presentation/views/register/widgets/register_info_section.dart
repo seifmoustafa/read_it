@@ -10,15 +10,17 @@ import 'package:read_it/features/auth/presentation/views/widgets/custom_form_tex
 import 'package:read_it/features/auth/presentation/views/widgets/custom_third_party_sign.dart';
 
 class RegisterInfoSection extends StatelessWidget {
-  GlobalKey<FormState> formkey = GlobalKey();
-  String? firstName;
-  String? lastName;
-  String? phoneNumber;
-  String? email;
-  String? password;
-  bool isLoading = false;
+  const RegisterInfoSection({super.key});
+
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> formkey = GlobalKey();
+    String? firstName;
+    String? lastName;
+    String? phoneNumber;
+    String? email;
+    String? password;
+    bool isLoading = false;
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterLoading) {
@@ -68,6 +70,7 @@ class RegisterInfoSection extends StatelessWidget {
                   height: 25,
                 ),
                 CustomFormTextField(
+                  textInputType: TextInputType.emailAddress,
                   hintText: 'Email',
                   onChanged: (data) {
                     email = data;

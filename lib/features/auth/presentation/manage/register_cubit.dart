@@ -52,6 +52,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     await collectionReference.doc(email).set({
       kUserName: '$firstName $lastName',
       kEmail: email,
+      kPhoneNumber: phoneNumber
     });
   }
 }

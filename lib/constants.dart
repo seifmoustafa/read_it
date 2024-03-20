@@ -12,3 +12,4 @@ const kIrishGrover = 'IrishGrover';
 const kUserCollection = 'users';
 const kUserName = 'user name';
 const kEmail = 'email';
+const kPhoneNumber = 'Phone number';
