@@ -104,7 +104,7 @@ class LoginSection extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 89),
+          SizedBox(height: 89),
         ],
       ),
     );

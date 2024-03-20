@@ -8,11 +8,7 @@ class AppLogoText extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(children: [
       Text(
-        'READ ',
-        style: Styles.textStyle64,
-      ),
-      Text(
-        'IT',
+        'READ IT',
         style: Styles.textStyle64,
       ),
     ]);

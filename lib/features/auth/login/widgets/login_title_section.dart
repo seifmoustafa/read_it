@@ -15,15 +15,7 @@ class LoginTitleSection extends StatelessWidget {
           padding: EdgeInsets.only(left: 28),
           child: AppLogoText(),
         ),
-        SizedBox(height: 36),
-        Padding(
-          padding: EdgeInsets.only(left: 37),
-          child: Text(
-            'Hello',
-            style: Styles.textStyle40,
-          ),
-        ),
-        SizedBox(height: 24),
+        SizedBox(height: 140),
       ],
     );
   }
