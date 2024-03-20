@@ -5,4 +5,6 @@ const kTheme = BoxDecoration(
     gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        colors: [Color(0xff497486), Color(0xff121D22)]));
+        colors: [Color(0xffED0000), Color(0xff160582)]));
+
+const kIrishGrover = 'IrishGrover';

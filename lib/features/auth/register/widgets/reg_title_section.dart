@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowledge_world/core/utils/app_logo_text.dart';
 import 'package:knowledge_world/core/utils/styles.dart';
 
 class RegTitleSection extends StatelessWidget {
@@ -13,10 +14,7 @@ class RegTitleSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 40),
-          Text(
-            'Knowledge \n World',
-            style: Styles.textStyle50,
-          ),
+          AppLogoText(),
           SizedBox(height: 24),
           Text(
             'SIGN UP',

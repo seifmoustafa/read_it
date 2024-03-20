@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowledge_world/core/utils/app_logo_text.dart';
 import 'package:knowledge_world/core/utils/styles.dart';
 
 class LoginTitleSection extends StatelessWidget {
@@ -12,10 +13,7 @@ class LoginTitleSection extends StatelessWidget {
         SizedBox(height: 50),
         Padding(
           padding: EdgeInsets.only(left: 28),
-          child: Text(
-            'Knowledge \n World',
-            style: Styles.textStyle50,
-          ),
+          child: AppLogoText(),
         ),
         SizedBox(height: 36),
         Padding(

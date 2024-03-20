@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:knowledge_world/core/utils/app_router.dart';
-import 'package:knowledge_world/features/splash/widgets/sliding_text.dart';
+import 'package:knowledge_world/features/splash/widgets/fading_logo.dart';
+import 'package:knowledge_world/features/splash/widgets/slidingtext.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -13,7 +14,10 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-  late Animation<Offset> slidingAnimation;
+  late Animation<Offset> slidingBTAnimation;
+  late Animation<Offset> slidingTBAnimation;
+  late Animation<double> fadeAnimation;
+
   @override
   void initState() {
     super.initState();
@@ -31,18 +35,42 @@ class _SplashViewBodyState extends State<SplashViewBody>
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [SlidingText(slidingAnimation: slidingAnimation)],
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        FadingLogo(
+          fadeAnimation: fadeAnimation,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SlidingText(
+              slidingAnimation: slidingBTAnimation,
+              text: 'READ ',
+            ),
+            SlidingText(
+              slidingAnimation: slidingTBAnimation,
+              text: 'IT',
+            ),
+          ],
+        )
+      ],
     );
   }
 
   void initAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 800),
     );
-    slidingAnimation =
+    slidingBTAnimation =
         Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero).animate(
+      animationController,
+    );
+    slidingTBAnimation =
+        Tween<Offset>(begin: const Offset(0, -10), end: Offset.zero).animate(
+      animationController,
+    );
+    fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
       animationController,
     );
     animationController.forward();
@@ -50,7 +78,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToLogin() {
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(milliseconds: 1500),
       () {
         GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knowledge_world/constants.dart';
 
 abstract class Styles {
   static const textStyle10 = TextStyle(
@@ -33,9 +34,10 @@ abstract class Styles {
       fontWeight: FontWeight.w800,
       color: Colors.black,
       decoration: TextDecoration.none);
-  static const textStyle50 = TextStyle(
-    fontSize: 50,
-    fontWeight: FontWeight.w500,
+  static const textStyle64 = TextStyle(
+    fontSize: 64,
+    fontWeight: FontWeight.normal,
+    fontFamily: kIrishGrover,
     fontStyle: FontStyle.italic,
     decoration: TextDecoration.none,
     color: Colors.white,
