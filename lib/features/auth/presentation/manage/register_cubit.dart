@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,11 +21,17 @@ class RegisterCubit extends Cubit<RegisterState> {
     try {
       UserCredential user = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      saveUser(
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          phoneNumber: phoneNumber);
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         emit(RegisterFailure(errMessage: 'Email already on use'));
       } else if (e.code == 'weak-password') {
+        log(e.code);
         emit(RegisterFailure(errMessage: 'Weak password'));
       }
     } catch (ex) {
@@ -36,12 +44,12 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String firstName,
     required String lastName,
     required String phoneNumber,
-  }) {
+  }) async {
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection(
       kUserCollection,
     );
-    collectionReference.doc(email).set({
+    await collectionReference.doc(email).set({
       kUserName: '$firstName $lastName',
       kEmail: email,
     });
