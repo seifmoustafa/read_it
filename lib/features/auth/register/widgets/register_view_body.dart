@@ -7,14 +7,17 @@ class RegisterViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      // physics: BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          RegTitleSection(),
-          RegisterInfoSection(),
-        ],
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: const SingleChildScrollView(
+        // physics: BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            RegTitleSection(),
+            RegisterInfoSection(),
+          ],
+        ),
       ),
     );
   }

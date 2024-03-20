@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:knowledge_world/core/utils/styles.dart';
-import 'package:knowledge_world/features/auth/widgets/custom_sing_button.dart';
 import 'package:knowledge_world/features/auth/widgets/custom_button.dart';
 import 'package:knowledge_world/features/auth/widgets/custom_form_text_field.dart';
+import 'package:knowledge_world/features/auth/widgets/custom_third_party_sign.dart';
 
 class RegisterInfoSection extends StatelessWidget {
   const RegisterInfoSection({super.key});
@@ -12,6 +10,7 @@ class RegisterInfoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     String? firstName;
     String? lastName;
+    String? phoneNumber;
     String? email;
     String? password;
 
@@ -47,6 +46,16 @@ class RegisterInfoSection extends StatelessWidget {
           ),
           CustomFormTextField(
             obscureText: true,
+            hintText: 'Phone Number',
+            onChanged: (data) {
+              phoneNumber = data;
+            },
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          CustomFormTextField(
+            obscureText: true,
             hintText: 'Email',
             onChanged: (data) {
               email = data;
@@ -63,24 +72,7 @@ class RegisterInfoSection extends StatelessWidget {
             },
           ),
           const SizedBox(
-            height: 10,
-          ),
-          GestureDetector(
-              onTap: () {},
-              child: const Center(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 24.0),
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    'SIGN UP with phone number?',
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-              )),
-          const SizedBox(
-            height: 24,
+            height: 50,
           ),
           Center(
             child: CustomButton(
@@ -89,42 +81,9 @@ class RegisterInfoSection extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 24,
-          ),
-          GestureDetector(
-              onTap: () {
-                GoRouter.of(context).pop();
-              },
-              child: const Center(
-                  child: Padding(
-                padding: EdgeInsets.only(right: 36.0),
-                child: Text(
-                  'Already have an account?',
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ))),
-          const SizedBox(
             height: 45,
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 24.0),
-            child: Text(
-              'Or Sign with',
-              style: Styles.textStyle16,
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                CustomSingButton(
-                  icon: Icons.facebook,
-                ),
-              ],
-            ),
-          ),
+          const CustomThirdPartySign(),
           const SizedBox(
             height: 50,
           ),
