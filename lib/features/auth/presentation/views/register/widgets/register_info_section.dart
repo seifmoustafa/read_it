@@ -4,9 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:read_it/core/functions/custom_snack_bar.dart';
 import 'package:read_it/core/utils/app_router.dart';
-import 'package:read_it/features/auth/presentation/manage/register_cubit.dart';
+import 'package:read_it/features/auth/presentation/manage/register_cubit/register_cubit.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_button.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_form_text_field.dart';
+import 'package:read_it/features/auth/presentation/views/widgets/custom_password_form_text_field.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_third_party_sign.dart';
 
 class RegisterInfoSection extends StatelessWidget {
@@ -15,6 +16,8 @@ class RegisterInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> formkey = GlobalKey();
+    GlobalKey<FormState> formkey1 = GlobalKey();
+
     String? firstName;
     String? lastName;
     String? phoneNumber;
@@ -79,9 +82,9 @@ class RegisterInfoSection extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                CustomFormTextField(
-                  obscureText: true,
+                CustomPasswordFormTextField(
                   hintText: 'Password',
+                  key: formkey1,
                   onChanged: (data) {
                     password = data;
                   },
