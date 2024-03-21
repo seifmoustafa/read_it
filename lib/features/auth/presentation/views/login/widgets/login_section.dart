@@ -11,6 +11,7 @@ import 'package:read_it/features/auth/presentation/views/widgets/custom_button.d
 import 'package:read_it/features/auth/presentation/views/widgets/custom_form_text_field.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_password_form_text_field.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_third_party_sign.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginSection extends StatelessWidget {
   const LoginSection({super.key});
@@ -27,6 +28,7 @@ class LoginSection extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccess) {
           isLoading = false;
+          _saveLoginState();
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         } else if (state is LoginFailure) {
           isLoading = false;
@@ -119,5 +121,10 @@ class LoginSection extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _saveLoginState() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', true);
   }
 }
