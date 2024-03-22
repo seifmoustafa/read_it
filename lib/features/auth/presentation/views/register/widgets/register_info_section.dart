@@ -16,7 +16,6 @@ class RegisterInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> formkey = GlobalKey();
-    GlobalKey<FormState> formkey1 = GlobalKey();
 
     String? firstName;
     String? lastName;
@@ -37,86 +36,83 @@ class RegisterInfoSection extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: isLoading,
-          child: Form(
-            key: formkey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CustomFormTextField(
-                  hintText: 'First Name',
-                  onChanged: (data) {
-                    firstName = data;
+        return Form(
+          key: formkey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomFormTextField(
+                hintText: 'First Name',
+                onChanged: (data) {
+                  firstName = data;
+                },
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              CustomFormTextField(
+                hintText: 'Last Name',
+                onChanged: (data) {
+                  lastName = data;
+                },
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              CustomFormTextField(
+                textInputType: TextInputType.number,
+                hintText: 'Phone Number',
+                onChanged: (data) {
+                  phoneNumber = data;
+                },
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              CustomFormTextField(
+                textInputType: TextInputType.emailAddress,
+                hintText: 'Email',
+                onChanged: (data) {
+                  email = data;
+                },
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              CustomPasswordFormTextField(
+                hintText: 'Password',
+                onChanged: (data) {
+                  password = data;
+                },
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Center(
+                child: CustomButton(
+                  isLoading: isLoading,
+                  buttonName: 'SIGN UP',
+                  onTap: () async {
+                    if (formkey.currentState!.validate()) {
+                      BlocProvider.of<RegisterCubit>(context).registerUser(
+                        email: email!,
+                        password: password!,
+                        firstName: firstName!,
+                        lastName: lastName!,
+                        phoneNumber: phoneNumber!,
+                      );
+                    }
                   },
                 ),
-                const SizedBox(
-                  height: 25,
-                ),
-                CustomFormTextField(
-                  hintText: 'Last Name',
-                  onChanged: (data) {
-                    lastName = data;
-                  },
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                CustomFormTextField(
-                  textInputType: TextInputType.number,
-                  hintText: 'Phone Number',
-                  onChanged: (data) {
-                    phoneNumber = data;
-                  },
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                CustomFormTextField(
-                  textInputType: TextInputType.emailAddress,
-                  hintText: 'Email',
-                  onChanged: (data) {
-                    email = data;
-                  },
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                CustomPasswordFormTextField(
-                  hintText: 'Password',
-                  key: formkey1,
-                  onChanged: (data) {
-                    password = data;
-                  },
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Center(
-                  child: CustomButton(
-                    buttonName: 'SIGN UP',
-                    onTap: () async {
-                      if (formkey.currentState!.validate()) {
-                        BlocProvider.of<RegisterCubit>(context).registerUser(
-                          email: email!,
-                          password: password!,
-                          firstName: firstName!,
-                          lastName: lastName!,
-                          phoneNumber: phoneNumber!,
-                        );
-                      }
-                    },
-                  ),
-                ),
-                const SizedBox(
-                  height: 45,
-                ),
-                const CustomThirdPartySign(),
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 45,
+              ),
+              const CustomThirdPartySign(),
+              const SizedBox(
+                height: 50,
+              ),
+            ],
           ),
         );
       },

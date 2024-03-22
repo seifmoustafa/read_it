@@ -9,12 +9,11 @@ class RegisterViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
-      child: SingleChildScrollView(
-        // physics: BouncingScrollPhysics(),
+      child: const SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const RegTitleSection(),
+            RegTitleSection(),
             RegisterInfoSection(),
           ],
         ),

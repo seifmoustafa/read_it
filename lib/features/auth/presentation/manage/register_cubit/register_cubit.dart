@@ -33,6 +33,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       } else if (e.code == 'weak-password') {
         log(e.code);
         emit(RegisterFailure(errMessage: 'Weak password'));
+      } else if (e.code == 'invalid-email') {
+        emit(RegisterFailure(errMessage: 'Invalid Email'));
+      } else {
+        log(e.code);
+        emit(RegisterFailure(errMessage: 'Something wrong'));
       }
     } catch (ex) {
       emit(RegisterFailure(errMessage: 'Something wrong'));

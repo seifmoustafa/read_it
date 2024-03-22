@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:read_it/core/utils/app_logo_text.dart';
 import 'package:read_it/core/utils/assets.dart';
 
@@ -15,6 +14,7 @@ class LoginTitleSection extends StatelessWidget {
           height: 50,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Padding(
               padding: EdgeInsets.only(left: 28),
