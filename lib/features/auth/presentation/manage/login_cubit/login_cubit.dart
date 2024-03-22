@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
+  LoginCubit() : super(LoginInitial()) {
+    _checkLoginState();
+  }
+
+  void _checkLoginState() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+    if (isLoggedIn) {
+      emit(LoginSuccess()); // Skip login screen if user is already logged in
+    }
+  }
 
   Future<void> loginUser(
       {required String email, required String password}) async {
