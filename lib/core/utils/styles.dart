@@ -40,6 +40,5 @@ abstract class Styles {
     fontFamily: kIrishGrover,
     fontStyle: FontStyle.italic,
     decoration: TextDecoration.none,
-    color: Colors.white,
   );
 }

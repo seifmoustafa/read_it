@@ -35,8 +35,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
+  flutter_facebook_auth: ^6.1.1
+  font_awesome_flutter: ^10.7.0
   go_router: ^13.2.1
   google_fonts: ^6.2.1
+  google_sign_in: ^6.2.1
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.2.2
 

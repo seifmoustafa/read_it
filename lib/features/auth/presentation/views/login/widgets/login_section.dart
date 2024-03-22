@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -80,7 +78,8 @@ class LoginSection extends StatelessWidget {
                   onTap: () async {
                     if (formkey.currentState!.validate()) {
                       BlocProvider.of<LoginCubit>(context)
-                          .loginUser(email: email!, password: password!);
+                          .signInWithEmailAndPassword(
+                              email: email!, password: password!);
                     }
                   },
                 ),

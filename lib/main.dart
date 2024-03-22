@@ -21,8 +21,9 @@ class KnowledgeWorldApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: AppRouter.router,
       theme: ThemeData.light().copyWith(
-          primaryColor: kLightTheme,
-          textTheme: GoogleFonts.interTextTheme(ThemeData.light().textTheme)),
+        primaryColor: kLightTheme,
+        textTheme: GoogleFonts.interTextTheme(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

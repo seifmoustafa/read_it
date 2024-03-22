@@ -13,7 +13,7 @@ class RegTitleSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 86,
+              height: 100,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +22,7 @@ class RegTitleSection extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 36,
+              height: 100,
             ),
           ]),
     );
