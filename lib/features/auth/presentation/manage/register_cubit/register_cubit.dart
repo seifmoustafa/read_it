@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'register_state.dart';
 
@@ -21,6 +22,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     try {
       UserCredential user = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      await _saveLoginState(true);
+
       saveUser(
           email: email,
           firstName: firstName,
@@ -59,5 +62,10 @@ class RegisterCubit extends Cubit<RegisterState> {
       kEmail: email,
       kPhoneNumber: phoneNumber
     });
+  }
+
+  Future<void> _saveLoginState(bool isLoggedIn) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', isLoggedIn);
   }
 }

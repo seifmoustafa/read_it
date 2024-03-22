@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/core/utils/app_logo_text.dart';
 import 'package:read_it/core/utils/assets.dart';
 
 class RegTitleSection extends StatelessWidget {
@@ -14,17 +13,16 @@ class RegTitleSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 40,
+              height: 86,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const AppLogoText(),
-                Expanded(child: Image.asset(AssetsData.logo))
+                Image.asset(AssetsData.logoLight),
               ],
             ),
             const SizedBox(
-              height: 66,
+              height: 36,
             ),
           ]),
     );

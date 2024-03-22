@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/constants.dart';
 import 'package:read_it/features/auth/presentation/views/register/widgets/register_view_body.dart';
 
 class RegisterView extends StatelessWidget {
@@ -8,10 +7,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: kTheme,
-        child: const RegisterViewBody(),
-      ),
+      body: const RegisterViewBody(),
     );
   }
 }

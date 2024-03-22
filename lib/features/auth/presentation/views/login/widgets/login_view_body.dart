@@ -11,7 +11,7 @@ class LoginViewBody extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: const SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             LoginTitleSection(),
             LoginSection(),

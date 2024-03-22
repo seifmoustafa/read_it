@@ -16,7 +16,7 @@ class FadingLogo extends StatelessWidget {
         builder: (context, _) {
           return FadeTransition(
             opacity: fadeAnimation,
-            child: Image.asset(AssetsData.logo),
+            child: Image.asset(AssetsData.logoLight),
           );
         });
   }

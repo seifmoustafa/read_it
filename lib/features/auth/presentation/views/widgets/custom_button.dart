@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:read_it/constants.dart';
 import 'package:read_it/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -21,16 +22,17 @@ class CustomButton extends StatelessWidget {
         ),
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.green.withOpacity(0.3),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 5),
-                ),
-              ]),
+            color: kButtonColor,
+            borderRadius: BorderRadius.circular(16),
+            //   boxShadow: [
+            //     // BoxShadow(
+            //     //   color: Colors.green.withOpacity(0.3),
+            //     //   spreadRadius: 1,
+            //     //   blurRadius: 5,
+            //     //   offset: const Offset(0, 5),
+            //     // ),
+            //   ],
+          ),
           height: 45,
           child: isLoading
               ? const Center(
@@ -41,7 +43,10 @@ class CustomButton extends StatelessWidget {
               : Center(
                   child: Text(
                     buttonName,
-                    style: Styles.textStyle16,
+                    style: Styles.textStyle18.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
         ),

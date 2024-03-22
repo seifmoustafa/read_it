@@ -8,7 +8,7 @@ class CustomThirdPartySign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.only(left: 45),

@@ -22,7 +22,7 @@ abstract class Styles {
     fontSize: 20,
     fontWeight: FontWeight.w900,
     decoration: TextDecoration.none,
-    color: Colors.white,
+    // color: Colors.white,
   );
   static const textStyle30 = TextStyle(
     fontSize: 30,

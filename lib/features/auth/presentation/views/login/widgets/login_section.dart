@@ -65,11 +65,12 @@ class LoginSection extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 16),
-                const Padding(
-                  padding: EdgeInsets.only(left: 220),
+                Padding(
+                  padding: const EdgeInsets.only(left: 220),
                   child: Text(
                     'forgot your password?',
-                    style: Styles.textStyle14,
+                    style: Styles.textStyle14
+                        .copyWith(color: const Color(0xff818B89)),
                   ),
                 ),
                 const SizedBox(height: 39),

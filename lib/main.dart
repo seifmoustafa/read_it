@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:read_it/constants.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/firebase_options.dart';
 
@@ -19,8 +20,9 @@ class KnowledgeWorldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: AppRouter.router,
-      theme: ThemeData.dark().copyWith(
-          textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme)),
+      theme: ThemeData.light().copyWith(
+          primaryColor: kLightTheme,
+          textTheme: GoogleFonts.interTextTheme(ThemeData.light().textTheme)),
       debugShowCheckedModeBanner: false,
     );
   }

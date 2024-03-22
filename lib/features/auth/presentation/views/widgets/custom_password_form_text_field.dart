@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:read_it/constants.dart';
 
 class CustomPasswordFormTextField extends StatefulWidget {
   const CustomPasswordFormTextField({
@@ -47,8 +48,10 @@ class _CustomPasswordFormTextFieldState
             },
           ),
           hintText: widget.hintText,
+          filled: true,
+          fillColor: kTextFillColor,
           hintStyle: const TextStyle(
-            color: Colors.white,
+            color: kTextFormColor,
           ),
           enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(
