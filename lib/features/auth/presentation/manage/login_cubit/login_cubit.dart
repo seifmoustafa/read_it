@@ -14,7 +14,6 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
-  // Method for signing in with Google
   Future<void> signInWithGoogle() async {
     emit(LoginLoading());
     try {

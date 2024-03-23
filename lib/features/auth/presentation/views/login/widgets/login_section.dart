@@ -34,86 +34,88 @@ class LoginSection extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: false,
-          child: Form(
-            key: formkey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 37),
-                  child: Text(
-                    'SIGN IN TO YOUR ACCOUNT',
-                    style: Styles.textStyle20,
-                  ),
+        return Form(
+          key: formkey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 37),
+                child: Text(
+                  'SIGN IN TO YOUR ACCOUNT',
+                  style: Styles.textStyle20,
                 ),
-                const SizedBox(height: 47),
-                CustomFormTextField(
-                  hintText: 'Email',
-                  onChanged: (data) {
-                    email = data;
+              ),
+              const SizedBox(height: 47),
+              CustomFormTextField(
+                hintText: 'Email',
+                onChanged: (data) {
+                  email = data;
+                },
+              ),
+              const SizedBox(height: 25),
+              CustomPasswordFormTextField(
+                hintText: 'Password',
+                onChanged: (data) {
+                  password = data;
+                },
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 220),
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kResetPasswordView);
                   },
-                ),
-                const SizedBox(height: 25),
-                CustomPasswordFormTextField(
-                  hintText: 'Password',
-                  onChanged: (data) {
-                    password = data;
-                  },
-                ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.only(left: 220),
                   child: Text(
                     'forgot your password?',
                     style: Styles.textStyle14
                         .copyWith(color: const Color(0xff818B89)),
                   ),
                 ),
-                const SizedBox(height: 39),
-                CustomButton(
-                  isLoading: isLoading,
-                  buttonName: 'SIGN IN',
-                  onTap: () async {
-                    if (formkey.currentState!.validate()) {
-                      BlocProvider.of<LoginCubit>(context)
-                          .signInWithEmailAndPassword(
-                              email: email!, password: password!);
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 51,
-                ),
-                const CustomThirdPartySign(),
-                const SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don\'t have an account?',
-                      style: Styles.textStyle14
-                          .copyWith(fontWeight: FontWeight.w100),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        GoRouter.of(context).push(AppRouter.kRegisterView);
-                      },
-                      child: Text(
-                        ' Create',
-                        style: Styles.textStyle16.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
+              ),
+              const SizedBox(height: 39),
+              CustomButton(
+                isLoading: isLoading,
+                buttonName: 'SIGN IN',
+                onTap: () async {
+                  if (formkey.currentState!.validate()) {
+                    BlocProvider.of<LoginCubit>(context)
+                        .signInWithEmailAndPassword(
+                            email: email!, password: password!);
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 51,
+              ),
+              const CustomThirdPartySign(),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t have an account?',
+                    style: Styles.textStyle14
+                        .copyWith(fontWeight: FontWeight.w100),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kRegisterView);
+                    },
+                    child: Text(
+                      ' Create',
+                      style: Styles.textStyle16.copyWith(
+                        fontWeight: FontWeight.w800,
                       ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 89),
-              ],
-            ),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 89),
+            ],
           ),
         );
       },
