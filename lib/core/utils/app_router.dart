@@ -7,6 +7,7 @@ import 'package:read_it/features/auth/presentation/views/login/login_view.dart';
 import 'package:read_it/features/auth/presentation/views/register/register_view.dart';
 import 'package:read_it/features/auth/presentation/views/reset_password/reset_password_view.dart';
 import 'package:read_it/features/home/presentation/views/home_view.dart';
+import 'package:read_it/features/search/presentation/views/search_view.dart';
 import 'package:read_it/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -14,6 +15,7 @@ abstract class AppRouter {
   static const kRegisterView = '/registerView';
   static const kHomeView = '/homeView';
   static const kResetPasswordView = '/resetPasswordView';
+  static const kSearchView = '/searchView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -43,6 +45,10 @@ abstract class AppRouter {
         create: (context) => ResetPasswordCubit(),
         child: const ResetPasswordView(),
       ),
+    ),
+    GoRoute(
+      path: kSearchView,
+      builder: (context, state) => const SearchView(),
     ),
   ]);
 }

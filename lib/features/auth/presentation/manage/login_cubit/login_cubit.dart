@@ -12,7 +12,9 @@ import 'package:read_it/constants.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
+  LoginCubit() : super(LoginInitial()) {
+    checkLoginState();
+  }
 
   Future<void> signInWithGoogle() async {
     emit(LoginLoading());
@@ -154,5 +156,21 @@ class LoginCubit extends Cubit<LoginState> {
       print('Error checking first time Facebook sign-in: $e');
     }
     return isFirstTimeFacebookSignIn;
+  }
+
+  Future<void> checkLoginState() async {
+    emit(LoginLoading());
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+      if (isLoggedIn) {
+        emit(LoginSuccess());
+      } else {
+        emit(LoginFailure(errMessage: 'Not logged in'));
+      }
+    } catch (e) {
+      log(e.toString());
+      emit(LoginFailure(errMessage: 'Error checking login state'));
+    }
   }
 }
