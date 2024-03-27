@@ -14,3 +14,4 @@ const kUserCollection = 'users';
 const kUserName = 'user name';
 const kEmail = 'email';
 const kPhoneNumber = 'Phone number';
+const kTestImage = 'assets/images/test.png';
