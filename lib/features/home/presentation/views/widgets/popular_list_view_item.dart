@@ -12,11 +12,11 @@ class BookListViewItem extends StatelessWidget {
             height: MediaQuery.of(context).size.height * .16,
             child: const CustomBookImage()),
         const SizedBox(
-          height: 16,
+          height: 8,
         ),
         const Text('Name'),
         const SizedBox(
-          height: 7,
+          height: 8,
         ),
         const Text('Writer'),
       ],

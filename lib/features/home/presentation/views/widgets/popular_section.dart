@@ -18,7 +18,7 @@ class PopularSection extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 38,
+          height: 24,
         ),
         PopularListView()
       ],
