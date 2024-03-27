@@ -13,20 +13,54 @@ class NewestBooksListViewItem extends StatelessWidget {
           color: Colors.grey.withOpacity(.2)),
       height: 125,
       child: const Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomBookImage(),
           SizedBox(
             width: 7,
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 7.0),
-            child: Text(
-              'History Book',
-              style: Styles.textStyle14,
-            ),
-          )
+          Expanded(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 7.0),
+                child: Text(
+                  'History Book',
+                  style: Styles.textStyle14,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 9.0),
+                child: Text(
+                  'Writer',
+                  style: Styles.textStyle14,
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 3, right: 16),
+                  child: Text(
+                    '8.9',
+                    style: Styles.textStyle14,
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.download,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 3.0),
+                    child: Text('8000'),
+                  )
+                ],
+              )
+            ],
+          ))
         ],
       ),
     );
