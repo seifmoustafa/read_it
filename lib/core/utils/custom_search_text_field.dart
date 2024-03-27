@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField(
-      {super.key,
-      this.readOnly = false,
-      this.prefixIcon,
-      this.suffixIcon,
-      this.prefixOnPressed,
-      this.suffixOnPressed});
+  const CustomSearchTextField({
+    super.key,
+    this.readOnly = false,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.prefixOnPressed,
+    this.suffixOnPressed,
+    this.focusNode,
+  });
   final bool readOnly;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final void Function()? prefixOnPressed;
   final void Function()? suffixOnPressed;
+  final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      focusNode: focusNode,
       readOnly: readOnly,
       decoration: InputDecoration(
           filled: true,
