@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/utils/custom_error_widget.dart';
 import 'package:read_it/core/utils/custom_loading_indecator.dart';
 import 'package:read_it/features/home/presentation/views/widgets/popular_list_view_item.dart';
@@ -23,8 +25,14 @@ class PopularListView extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8),
                   child: SizedBox(
                       height: MediaQuery.of(context).size.height * .3,
-                      child: BookListViewItem(
-                        book: state.books[index],
+                      child: GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                              extra: state.books[index]);
+                        },
+                        child: BookListViewItem(
+                          book: state.books[index],
+                        ),
                       )),
                 );
               }),

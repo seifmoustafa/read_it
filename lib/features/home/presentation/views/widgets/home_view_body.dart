@@ -17,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              LogoSection(),
+              Center(child: LogoSection()),
               SizedBox(
                 height: 24,
               ),

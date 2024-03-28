@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/utils/custom_error_widget.dart';
 import 'package:read_it/core/utils/custom_loading_indecator.dart';
 import 'package:read_it/features/home/presentation/views/widgets/newest_books_list_view_item.dart';
@@ -23,8 +25,14 @@ class NewestBooksListView extends StatelessWidget {
                 padding: EdgeInsets.only(
                     bottom: 16.0,
                     right: MediaQuery.of(context).size.width * .2),
-                child: NewestBooksListViewItem(
-                  book: state.books[index],
+                child: GestureDetector(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                        extra: state.books[index]);
+                  },
+                  child: NewestBooksListViewItem(
+                    book: state.books[index],
+                  ),
                 ),
               );
             },

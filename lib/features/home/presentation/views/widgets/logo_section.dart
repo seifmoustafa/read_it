@@ -12,10 +12,8 @@ class LogoSection extends StatelessWidget {
       padding: const EdgeInsets.only(
         right: 32,
       ),
-      child: Center(
-        child: SafeArea(
-          child: Image.asset(AssetsData.logoLight),
-        ),
+      child: SafeArea(
+        child: Image.asset(AssetsData.logoLight),
       ),
     );
   }
