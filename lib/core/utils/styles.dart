@@ -31,7 +31,6 @@ abstract class Styles {
   static const textStyle40 = TextStyle(
       fontSize: 40,
       fontWeight: FontWeight.w800,
-      color: Colors.black,
       decoration: TextDecoration.none);
   static const textStyle64 = TextStyle(
     fontSize: 64,
