@@ -13,7 +13,10 @@ class BookListViewItem extends StatelessWidget {
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * .16,
-            child: const CustomBookImage(),
+            child: CustomBookImage(
+              imageUrl: book.volumeInfo.imageLinks?.thumbnail ??
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9qPrTN9dtJcwVBHlLQPctoVy9mzjwWYl1-xOtjzXBfw&s',
+            ),
           ),
           const SizedBox(
             height: 8,
