@@ -1,4 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_it/core/utils/styles.dart';
 import 'package:read_it/core/book_model/book_model.dart';
@@ -65,14 +67,58 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 19,
         ),
-        Center(
+        Text(
+          textAlign: TextAlign.center,
+          book.volumeInfo.title!,
+          style: Styles.textStyle20.copyWith(
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        Opacity(
+          opacity: .5,
           child: Text(
-            textAlign: TextAlign.center,
-            book.volumeInfo.title!,
+            book.volumeInfo.authors?[0] ?? 'Unknown',
             style: Styles.textStyle20.copyWith(
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.w500,
             ),
           ),
+        ),
+        const SizedBox(
+          height: 28,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            book.volumeInfo.description ?? 'No descreption',
+            textAlign: TextAlign.center,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite,
+                  size: 36,
+                  color: Colors.red,
+                )),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.download,
+                  size: 46,
+                ),
+              ),
+            ),
+          ],
         )
       ],
     );

@@ -17,8 +17,7 @@ class NewestBooksListViewItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomBookImage(
-            imageUrl: book.volumeInfo.imageLinks?.thumbnail ??
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9qPrTN9dtJcwVBHlLQPctoVy9mzjwWYl1-xOtjzXBfw&s',
+            imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '',
           ),
           const SizedBox(
             width: 7,
