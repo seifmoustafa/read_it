@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:read_it/core/utils/styles.dart';
+import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
 
 class NewestBooksListViewItem extends StatelessWidget {
-  const NewestBooksListViewItem({super.key});
-
+  const NewestBooksListViewItem({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,14 +13,14 @@ class NewestBooksListViewItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           color: Colors.grey.withOpacity(.2)),
       height: 125,
-      child: const Row(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomBookImage(
-            imageUrl:
+            imageUrl: book.volumeInfo.imageLinks?.thumbnail ??
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9qPrTN9dtJcwVBHlLQPctoVy9mzjwWYl1-xOtjzXBfw&s',
           ),
-          SizedBox(
+          const SizedBox(
             width: 7,
           ),
           Expanded(
@@ -28,39 +29,28 @@ class NewestBooksListViewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 7.0),
+                padding: const EdgeInsets.only(top: 7.0),
                 child: Text(
-                  'History Book',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  book.volumeInfo.title!,
                   style: Styles.textStyle14,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 9.0),
+                padding: const EdgeInsets.only(top: 9.0),
                 child: Text(
-                  'Writer',
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  book.volumeInfo.authors?[0] ?? 'Unkown Auther',
                   style: Styles.textStyle14,
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 3, right: 16),
-                  child: Text(
-                    '8.9',
-                    style: Styles.textStyle14,
-                  ),
-                ),
+              const SizedBox(
+                height: 13,
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.download,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 3.0),
-                    child: Text('8000'),
-                  )
-                ],
+              const Icon(
+                Icons.download,
               )
             ],
           ))

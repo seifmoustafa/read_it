@@ -17,13 +17,15 @@ class NewestBooksListView extends StatelessWidget {
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 10,
+            itemCount: state.books.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(
                     bottom: 16.0,
                     right: MediaQuery.of(context).size.width * .2),
-                child: const NewestBooksListViewItem(),
+                child: NewestBooksListViewItem(
+                  book: state.books[index],
+                ),
               );
             },
           );
