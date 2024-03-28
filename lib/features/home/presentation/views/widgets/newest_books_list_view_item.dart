@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:read_it/core/utils/styles.dart';
-import 'package:read_it/features/home/presentation/views/widgets/custom_book_item.dart';
+import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
 
 class NewestBooksListViewItem extends StatelessWidget {
   const NewestBooksListViewItem({super.key});

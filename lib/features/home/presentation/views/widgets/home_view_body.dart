@@ -9,30 +9,33 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(slivers: [
-      SliverToBoxAdapter(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            LogoSection(),
-            SizedBox(
-              height: 24,
-            ),
-            SearchSection(),
-            SizedBox(
-              height: 24,
-            ),
-            PopularSection(),
-            SizedBox(
-              height: 24,
-            ),
-          ],
+    return const PopScope(
+      canPop: false,
+      child: CustomScrollView(slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              LogoSection(),
+              SizedBox(
+                height: 24,
+              ),
+              SearchSection(),
+              SizedBox(
+                height: 24,
+              ),
+              PopularSection(),
+              SizedBox(
+                height: 24,
+              ),
+            ],
+          ),
         ),
-      ),
-      SliverToBoxAdapter(
-        child: NewestSection(),
-      )
-    ]);
+        SliverToBoxAdapter(
+          child: NewestSection(),
+        )
+      ]),
+    );
   }
 }
