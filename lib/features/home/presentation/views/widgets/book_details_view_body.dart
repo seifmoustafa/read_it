@@ -6,6 +6,7 @@ import 'package:read_it/core/utils/styles.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:read_it/core/book_model/book_model.dart';
+import 'package:read_it/core/functions/launch_custom_url.dart';
 import 'package:read_it/features/home/presentation/views/widgets/logo_section.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
 
@@ -114,8 +115,7 @@ class BookDetailsSection extends StatelessWidget {
               padding: const EdgeInsets.only(right: 16.0),
               child: IconButton(
                 onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kWebView,
-                      extra: book.volumeInfo.previewLink);
+                  launchCustomUrl(context, book.volumeInfo.previewLink);
                 },
                 icon: const Icon(
                   Icons.download,

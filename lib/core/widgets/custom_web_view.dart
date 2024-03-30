@@ -21,10 +21,13 @@ class _CustomWebViewState extends State<CustomWebView> {
           style: Styles.textStyle14,
         ),
       ),
-      body: WebViewWidget(
-        controller: WebViewController()
-          ..setJavaScriptMode(JavaScriptMode.disabled)
-          ..loadRequest(Uri.parse(widget.url)),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: WebViewWidget(
+          controller: WebViewController()
+            ..setJavaScriptMode(JavaScriptMode.disabled)
+            ..loadRequest(Uri.parse(widget.url)),
+        ),
       ),
     );
   }
