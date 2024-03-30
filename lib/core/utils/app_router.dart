@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/utils/service_locator.dart';
+import 'package:read_it/core/widgets/custom_web_view.dart';
 import 'package:read_it/features/home/presentation/views/home_view.dart';
 import 'package:read_it/features/search/presentation/views/search_view.dart';
 import 'package:read_it/features/splash/presentation/views/splash_view.dart';
@@ -23,6 +25,7 @@ abstract class AppRouter {
   static const kResetPasswordView = '/resetPasswordView';
   static const kSearchView = '/searchView';
   static const kBookDetailsView = '/bookDetailsView';
+  static const kWebView = '/customWebView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -72,6 +75,12 @@ abstract class AppRouter {
       path: kBookDetailsView,
       builder: (context, state) => BookDetailsView(
         bookModel: state.extra as BookModel,
+      ),
+    ),
+    GoRoute(
+      path: kWebView,
+      builder: (context, state) => CustomWebView(
+        url: state.extra as String,
       ),
     )
   ]);

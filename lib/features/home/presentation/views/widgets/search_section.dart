@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_it/core/utils/app_router.dart';
-import 'package:read_it/core/utils/custom_search_text_field.dart';
+import 'package:read_it/core/widgets/custom_search_text_field.dart';
 
 class SearchSection extends StatelessWidget {
   const SearchSection({

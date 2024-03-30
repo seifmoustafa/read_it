@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:read_it/core/utils/styles.dart';
+import 'package:read_it/core/utils/app_router.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/features/home/presentation/views/widgets/logo_section.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
@@ -103,7 +105,7 @@ class BookDetailsSection extends StatelessWidget {
           children: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.favorite,
                   size: 36,
                   color: Colors.red,
@@ -111,7 +113,10 @@ class BookDetailsSection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).push(AppRouter.kWebView,
+                      extra: book.volumeInfo.previewLink);
+                },
                 icon: const Icon(
                   Icons.download,
                   size: 46,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:read_it/core/utils/custom_search_text_field.dart';
+import 'package:read_it/core/widgets/custom_search_text_field.dart';
 
 class SearchViewBody extends StatefulWidget {
   const SearchViewBody({Key? key}) : super(key: key);
