@@ -1,30 +1,30 @@
 part of 'profile_image_cubit.dart';
 
-abstract class ProfileimageState extends Equatable {
-  const ProfileimageState();
+abstract class ProfileImageState extends Equatable {
+  const ProfileImageState();
 
   @override
   List<Object> get props => [];
 }
 
-class ProfileimageInitial extends ProfileimageState {}
+class ProfileImageInitial extends ProfileImageState {}
 
-class ProfileimageLoading extends ProfileimageState {}
+class ProfileImageLoading extends ProfileImageState {}
 
-class ProfileimagePicked extends ProfileimageState {
+class ProfileImagePicked extends ProfileImageState {
   final File imageFile;
 
-  const ProfileimagePicked(this.imageFile);
+  const ProfileImagePicked(this.imageFile);
 }
 
-class ProfileimageUploaded extends ProfileimageState {
+class ProfileImageUploaded extends ProfileImageState {
   final String imageUrl;
 
-  const ProfileimageUploaded(this.imageUrl);
+  const ProfileImageUploaded(this.imageUrl);
 }
 
-class ProfileimageFailure extends ProfileimageState {
+class ProfileImageFailure extends ProfileImageState {
   final String errMessage;
 
-  const ProfileimageFailure(this.errMessage);
+  const ProfileImageFailure(this.errMessage);
 }

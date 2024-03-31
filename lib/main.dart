@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/utils/service_locator.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 
 void main() async {
   setupServiceLocator();
@@ -12,6 +13,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseAppCheck.instance
+      .activate(androidProvider: AndroidProvider.debug);
   runApp(const KnowledgeWorldApp());
 }
 

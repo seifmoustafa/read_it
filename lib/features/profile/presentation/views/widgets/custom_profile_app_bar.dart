@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,9 +6,7 @@ import 'package:read_it/core/utils/styles.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_image_cubit/profile_image_cubit.dart';
 
 class CustomProfileAppBar extends StatelessWidget {
-  const CustomProfileAppBar({
-    super.key,
-  });
+  const CustomProfileAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +30,36 @@ class CustomProfileAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () async {
-                    var pickedimage =
-                        await BlocProvider.of<ProfileimageCubit>(context)
-                            .pickImage();
+                BlocBuilder<ProfileImageCubit, ProfileImageState>(
+                  builder: (context, state) {
+                    return GestureDetector(
+                      onTap: () async {
+                        final imageCubit = context.read<ProfileImageCubit>();
+                        await imageCubit.pickImage();
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey,
+                          image: state is ProfileImagePicked
+                              ? DecorationImage(
+                                  image: FileImage(state.imageFile),
+                                  fit: BoxFit.cover,
+                                )
+                              : null,
+                        ),
+                        child: state is! ProfileImagePicked
+                            ? const Icon(
+                                color: Colors.white,
+                                Icons.add,
+                                size: 46,
+                              )
+                            : null,
+                      ),
+                    );
                   },
-                  child: Container(
-                    width: 80,
-                    height: 80,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                    child: const Icon(
-                      color: Colors.white,
-                      Icons.add,
-                      size: 46,
-                    ),
-                  ),
                 ),
                 const Text(
                   'Seif Moustafa',
