@@ -28,3 +28,13 @@ class ProfileImageFailure extends ProfileImageState {
 
   const ProfileImageFailure(this.errMessage);
 }
+
+class SignOutSuccess extends ProfileImageState {}
+
+class SignOutLoading extends ProfileImageState {}
+
+class SignOutFailure extends ProfileImageState {
+  final String errMessage;
+
+  const SignOutFailure(this.errMessage);
+}
