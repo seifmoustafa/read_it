@@ -12,10 +12,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // profile_image_cubit.dart
 
-part 'profile_image_state.dart';
+part 'profile_state.dart';
 
-class ProfileImageCubit extends Cubit<ProfileImageState> {
-  ProfileImageCubit() : super(ProfileImageInitial()) {
+class ProfileImageCubit extends Cubit<ProfileState> {
+  ProfileImageCubit() : super(ProfileInitial()) {
     fetchProfileImageUrl();
   }
 
@@ -83,7 +83,7 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
   }
 
   void reset() {
-    emit(ProfileImageInitial());
+    emit(ProfileInitial());
   }
 
   Future<String> fetchUserName() async {

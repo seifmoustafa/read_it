@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/functions/custom_snack_bar.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_button.dart';
+import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/profile/presentation/views/widgets/custom_profile_app_bar.dart';
-import 'package:read_it/features/profile/presentation/manage/profile_image_cubit/profile_image_cubit.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -20,7 +20,7 @@ class ProfileViewBody extends StatelessWidget {
           const SizedBox(
             height: 24,
           ),
-          BlocConsumer<ProfileImageCubit, ProfileImageState>(
+          BlocConsumer<ProfileImageCubit, ProfileState>(
             listener: (context, state) {
               if (state is SignOutSuccess) {
                 isLoading = false;

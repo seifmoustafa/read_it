@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/styles.dart';
 import 'package:read_it/core/utils/app_router.dart';
-import 'package:read_it/features/profile/presentation/manage/profile_image_cubit/profile_image_cubit.dart';
+import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 
 class CustomProfileAppBar extends StatelessWidget {
   const CustomProfileAppBar({super.key});
@@ -30,14 +30,14 @@ class CustomProfileAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BlocListener<ProfileImageCubit, ProfileImageState>(
+                BlocListener<ProfileImageCubit, ProfileState>(
                   listener: (context, state) {
                     if (state is ProfileImageUploaded) {
                       // If an image is uploaded, rebuild the profile view
                       BlocProvider.of<ProfileImageCubit>(context).reset();
                     }
                   },
-                  child: BlocBuilder<ProfileImageCubit, ProfileImageState>(
+                  child: BlocBuilder<ProfileImageCubit, ProfileState>(
                     builder: (context, state) {
                       if (state is ProfileImageLoading) {
                         return const CircularProgressIndicator();
