@@ -7,6 +7,7 @@ import 'package:read_it/core/widgets/custom_web_view.dart';
 import 'package:read_it/features/home/presentation/views/home_view.dart';
 import 'package:read_it/features/search/presentation/views/search_view.dart';
 import 'package:read_it/features/splash/presentation/views/splash_view.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view.dart';
 import 'package:read_it/features/auth/presentation/views/login/login_view.dart';
 import 'package:read_it/features/home/data/repos/home_repo_implementation.dart';
 import 'package:read_it/features/home/presentation/views/book_details_view.dart';
@@ -25,6 +26,7 @@ abstract class AppRouter {
   static const kResetPasswordView = '/resetPasswordView';
   static const kSearchView = '/searchView';
   static const kBookDetailsView = '/bookDetailsView';
+  static const kProfileView = '/profileView';
   static const kWebView = '/customWebView';
   static final router = GoRouter(routes: [
     GoRoute(
@@ -82,6 +84,10 @@ abstract class AppRouter {
       builder: (context, state) => CustomWebView(
         url: state.extra as String,
       ),
+    ),
+    GoRoute(
+      path: kProfileView,
+      builder: (context, state) => const ProfileView(),
     )
   ]);
 }

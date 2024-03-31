@@ -36,6 +36,7 @@ dependencies:
   equatable: ^2.0.5
   firebase_auth: ^4.17.9
   firebase_core: ^2.27.1
+  firebase_storage: ^11.6.11
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
@@ -45,6 +46,7 @@ dependencies:
   go_router: ^13.2.1
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
+  image_picker: ^1.0.7
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.2.2
   sqflite: ^2.3.2
