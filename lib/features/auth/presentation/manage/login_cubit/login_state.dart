@@ -14,3 +14,5 @@ class LoginFailure extends LoginState {
 
   LoginFailure({required this.errMessage});
 }
+
+class InitLoginFailure extends LoginState {}

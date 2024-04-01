@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -166,7 +165,7 @@ class LoginCubit extends Cubit<LoginState> {
       if (isLoggedIn) {
         emit(LoginSuccess());
       } else {
-        emit(LoginFailure(errMessage: 'Not logged in'));
+        emit(InitLoginFailure());
       }
     } catch (e) {
       log(e.toString());
