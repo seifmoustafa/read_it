@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/features/home/presentation/views/widgets/logo_section.dart';
 import 'package:read_it/features/home/presentation/views/widgets/book_details_section.dart';
-import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_two_floating_buttons.dart';
+import 'package:read_it/features/home/presentation/manage/book_details_cubit/book_details_cubit.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key, required this.bookModel});
@@ -41,7 +41,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 62,
                   ),
-                  BlocBuilder<ProfileCubit, ProfileState>(
+                  BlocBuilder<BookdetailsCubit, BookdetailsState>(
                     builder: (context, state) {
                       return BookDetailsSection(
                         book: bookModel,

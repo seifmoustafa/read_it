@@ -33,7 +33,6 @@ class CustomProfileAppBar extends StatelessWidget {
                 BlocListener<ProfileCubit, ProfileState>(
                   listener: (context, state) {
                     if (state is ProfileImageUploaded) {
-                      // If an image is uploaded, rebuild the profile view
                       BlocProvider.of<ProfileCubit>(context).reset();
                     }
                   },
@@ -42,28 +41,53 @@ class CustomProfileAppBar extends StatelessWidget {
                       if (state is ProfileImageLoading) {
                         return const CircularProgressIndicator();
                       } else if (state is ProfileImagePicked) {
-                        return GestureDetector(
-                          onTap: () async {
-                            final imageCubit = context.read<ProfileCubit>();
-                            await imageCubit.pickImage();
-                            GoRouter.of(context)
-                                .pushReplacement(AppRouter.kProfileView);
-                          },
-                          child: Container(
-                            width: 80,
-                            height: 80,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  state.imageFile.path,
+                        if (state.imageFile != null) {
+                          return GestureDetector(
+                            onTap: () async {
+                              final imageCubit = context.read<ProfileCubit>();
+                              await imageCubit.pickImage();
+                              GoRouter.of(context)
+                                  .pushReplacement(AppRouter.kProfileView);
+                            },
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey,
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    state.imageFile!.path,
+                                  ),
+                                  fit: BoxFit.cover,
                                 ),
-                                fit: BoxFit.cover,
                               ),
                             ),
-                          ),
-                        );
+                          );
+                        } else {
+                          // Render default placeholder icon if imageFile is null
+                          return GestureDetector(
+                            onTap: () async {
+                              final imageCubit = context.read<ProfileCubit>();
+                              await imageCubit.pickImage();
+                              GoRouter.of(context)
+                                  .pushReplacement(AppRouter.kProfileView);
+                            },
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey,
+                              ),
+                              child: const Icon(
+                                color: Colors.white,
+                                Icons.add,
+                                size: 46,
+                              ),
+                            ),
+                          );
+                        }
                       } else {
                         return GestureDetector(
                           onTap: () async {
@@ -99,7 +123,7 @@ class CustomProfileAppBar extends StatelessWidget {
                       return Text('Error: ${snapshot.error}');
                     } else {
                       return Text(
-                        snapshot.data ?? '', // Display user name
+                        snapshot.data ?? '',
                         style: Styles.textStyle14,
                       );
                     }

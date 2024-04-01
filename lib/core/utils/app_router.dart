@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/utils/service_locator.dart';
 import 'package:read_it/core/widgets/custom_web_view.dart';

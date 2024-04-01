@@ -12,7 +12,7 @@ class ProfileInitial extends ProfileState {}
 class ProfileImageLoading extends ProfileState {}
 
 class ProfileImagePicked extends ProfileState {
-  final File imageFile;
+  final File? imageFile; // Change the type to nullable File
 
   const ProfileImagePicked(this.imageFile);
 }
@@ -37,10 +37,4 @@ class SignOutFailure extends ProfileState {
   final String errMessage;
 
   const SignOutFailure(this.errMessage);
-}
-
-class FavouriteItem extends ProfileState {
-  final String bookId;
-
-  const FavouriteItem(this.bookId);
 }

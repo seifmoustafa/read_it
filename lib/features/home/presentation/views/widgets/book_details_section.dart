@@ -4,7 +4,7 @@ import 'package:read_it/core/utils/styles.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/functions/launch_custom_url.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
+import 'package:read_it/features/home/presentation/manage/book_details_cubit/book_details_cubit.dart';
 
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection(
@@ -70,7 +70,7 @@ class BookDetailsSection extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                BlocProvider.of<ProfileCubit>(context).addToFavorites(book);
+                BlocProvider.of<BookdetailsCubit>(context).addToFavorites(book);
               },
               icon: Icon(
                 Icons.favorite,

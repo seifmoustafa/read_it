@@ -79,58 +79,6 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<void> addToFavorites(BookModel book) async {
-    try {
-      // Fetch user's favorites list from the database
-      final snapshot = await _firestore
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.email)
-          .get();
-
-      final data = snapshot.data();
-      List<String> favorites = List<String>.from(data?['favorites'] ?? []);
-
-      // Check if the book is already in favorites
-      if (!favorites.contains(book.id)) {
-        favorites.add(book.id.toString()); // Add book to favorites list
-        await _updateFavorites(
-            favorites); // Update favorites list in the database
-        emit(FavouriteItem(book.id!)); // Emit FavouriteItem state
-      }
-    } catch (error) {}
-  }
-
-  Future<void> _updateFavorites(List<String> favorites) async {
-    try {
-      await _firestore
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.email)
-          .set({'favorites': favorites}, SetOptions(merge: true));
-    } catch (error) {
-      throw ('Failed to update favorites: $error');
-    }
-  }
-
-  Future<void> checkFavoriteStatus(String bookId) async {
-    try {
-      // Fetch user's favorites list from the database
-      final snapshot = await _firestore
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.email)
-          .get();
-
-      final data = snapshot.data();
-      List<String> favorites = List<String>.from(data?['favorites'] ?? []);
-
-      // Check if the book is in favorites
-      if (favorites.contains(bookId)) {
-        emit(FavouriteItem(bookId)); // Emit FavouriteItem state
-      }
-    } catch (error) {
-      throw ('Failed to check favorite status: $error');
-    }
-  }
-
   void reset() {
     emit(ProfileInitial());
   }

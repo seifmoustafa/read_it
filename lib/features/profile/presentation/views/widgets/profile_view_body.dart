@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/app_router.dart';
+import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/functions/custom_snack_bar.dart';
+import 'package:read_it/core/widgets/books_list_view_item.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_button.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/profile/presentation/views/widgets/custom_profile_app_bar.dart';
@@ -45,13 +47,7 @@ class ProfileViewBody extends StatelessWidget {
               ));
             },
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 17.0),
-            child: Text(
-              'Favorite',
-              style: TextStyle(fontSize: 25),
-            ),
-          )
+          FavoriteSection(),
         ],
       ),
     );
@@ -63,6 +59,20 @@ class FavoriteSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 17.0),
+          child: Text(
+            'Favorite',
+            style: TextStyle(fontSize: 25),
+          ),
+        ),
+        SizedBox(
+          height: 36,
+        ),
+      ],
+    );
   }
 }
