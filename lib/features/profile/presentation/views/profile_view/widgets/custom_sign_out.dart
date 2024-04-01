@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/functions/custom_snack_bar.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_container.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_container.dart';
 
 class CustomSignOut extends StatelessWidget {
   const CustomSignOut({

@@ -6,13 +6,13 @@ import 'package:read_it/core/widgets/custom_web_view.dart';
 import 'package:read_it/features/home/presentation/views/home_view.dart';
 import 'package:read_it/features/search/presentation/views/search_view.dart';
 import 'package:read_it/features/splash/presentation/views/splash_view.dart';
-import 'package:read_it/features/profile/presentation/views/profile_view.dart';
 import 'package:read_it/features/auth/presentation/views/login/login_view.dart';
 import 'package:read_it/features/home/data/repos/home_repo_implementation.dart';
 import 'package:read_it/features/home/presentation/views/book_details_view.dart';
 import 'package:read_it/features/search/data/repos/search_repos_implementation.dart';
 import 'package:read_it/features/auth/presentation/views/register/register_view.dart';
 import 'package:read_it/features/auth/presentation/manage/login_cubit/login_cubit.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/profile_view.dart';
 import 'package:read_it/features/auth/presentation/manage/register_cubit/register_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/auth/presentation/views/reset_password/reset_password_view.dart';
@@ -30,6 +30,7 @@ abstract class AppRouter {
   static const kBookDetailsView = '/bookDetailsView';
   static const kProfileView = '/profileView';
   static const kWebView = '/customWebView';
+  static const kFavoriteView = '/favoriteView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -96,6 +97,10 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kProfileView,
+      builder: (context, state) => const ProfileView(),
+    ),
+    GoRoute(
+      path: kFavoriteView,
       builder: (context, state) => const ProfileView(),
     )
   ]);

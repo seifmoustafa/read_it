@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_container.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_container.dart';
 
 class CustomFavoriteSection extends StatelessWidget {
   const CustomFavoriteSection({super.key});

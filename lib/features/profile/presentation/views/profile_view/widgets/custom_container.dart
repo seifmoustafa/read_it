@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/container_details.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/container_details.dart';
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer(

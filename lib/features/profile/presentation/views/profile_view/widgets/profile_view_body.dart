@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_app_bar.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/profile_actions.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_profile_app_bar.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_app_bar.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/profile_actions.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_profile_app_bar.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_sign_out.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_favorite_section.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_sign_out.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_favorite_section.dart';
 
 class ProfileActions extends StatelessWidget {
   const ProfileActions({super.key});
