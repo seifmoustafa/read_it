@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/styles.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/functions/launch_custom_url.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
+import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key, required this.book});
+  const BookDetailsSection(
+      {Key? key, required this.book, required this.isFavorite})
+      : super(key: key);
+
   final BookModel book;
+  final bool isFavorite;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,8 +25,10 @@ class BookDetailsSection extends StatelessWidget {
               horizontal: MediaQuery.of(context).size.width * .2,
             ),
             child: Center(
-                child: CustomBookImage(
-                    imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '')),
+              child: CustomBookImage(
+                imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '',
+              ),
+            ),
           ),
         ),
         const SizedBox(
@@ -47,7 +56,7 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            book.volumeInfo.description ?? 'No descreption',
+            book.volumeInfo.description ?? 'No description',
             textAlign: TextAlign.center,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
@@ -60,12 +69,15 @@ class BookDetailsSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite,
-                  size: 36,
-                  color: Colors.red,
-                )),
+              onPressed: () {
+                BlocProvider.of<ProfileCubit>(context).addToFavorites(book);
+              },
+              icon: Icon(
+                Icons.favorite,
+                size: 36,
+                color: isFavorite ? Colors.red : Colors.grey,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: IconButton(

@@ -10,7 +10,7 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => ProfileImageCubit(),
+        create: (context) => ProfileCubit(),
         child: const ProfileViewBody(),
       ),
     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/features/home/presentation/views/widgets/logo_section.dart';
 import 'package:read_it/features/home/presentation/views/widgets/book_details_section.dart';
+import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_two_floating_buttons.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -39,8 +41,14 @@ class BookDetailsViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 62,
                   ),
-                  BookDetailsSection(
-                    book: bookModel,
+                  BlocBuilder<ProfileCubit, ProfileState>(
+                    builder: (context, state) {
+                      return BookDetailsSection(
+                        book: bookModel,
+                        isFavorite: state is FavouriteItem &&
+                            state.bookId == bookModel.id,
+                      );
+                    },
                   ),
                 ],
               ),

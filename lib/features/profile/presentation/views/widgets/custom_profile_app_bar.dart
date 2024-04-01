@@ -30,22 +30,21 @@ class CustomProfileAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BlocListener<ProfileImageCubit, ProfileState>(
+                BlocListener<ProfileCubit, ProfileState>(
                   listener: (context, state) {
                     if (state is ProfileImageUploaded) {
                       // If an image is uploaded, rebuild the profile view
-                      BlocProvider.of<ProfileImageCubit>(context).reset();
+                      BlocProvider.of<ProfileCubit>(context).reset();
                     }
                   },
-                  child: BlocBuilder<ProfileImageCubit, ProfileState>(
+                  child: BlocBuilder<ProfileCubit, ProfileState>(
                     builder: (context, state) {
                       if (state is ProfileImageLoading) {
                         return const CircularProgressIndicator();
                       } else if (state is ProfileImagePicked) {
                         return GestureDetector(
                           onTap: () async {
-                            final imageCubit =
-                                context.read<ProfileImageCubit>();
+                            final imageCubit = context.read<ProfileCubit>();
                             await imageCubit.pickImage();
                             GoRouter.of(context)
                                 .pushReplacement(AppRouter.kProfileView);
@@ -68,8 +67,7 @@ class CustomProfileAppBar extends StatelessWidget {
                       } else {
                         return GestureDetector(
                           onTap: () async {
-                            final imageCubit =
-                                context.read<ProfileImageCubit>();
+                            final imageCubit = context.read<ProfileCubit>();
                             await imageCubit.pickImage();
                             GoRouter.of(context)
                                 .pushReplacement(AppRouter.kProfileView);
@@ -93,7 +91,7 @@ class CustomProfileAppBar extends StatelessWidget {
                   ),
                 ),
                 FutureBuilder<String>(
-                  future: context.read<ProfileImageCubit>().fetchUserName(),
+                  future: context.read<ProfileCubit>().fetchUserName(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const CircularProgressIndicator();

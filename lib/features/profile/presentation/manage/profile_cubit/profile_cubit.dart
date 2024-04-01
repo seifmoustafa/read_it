@@ -1,23 +1,18 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:read_it/constants.dart';
-import 'package:go_router/go_router.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:read_it/core/utils/app_router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:read_it/core/book_model/book_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// profile_image_cubit.dart
+
 
 part 'profile_state.dart';
 
-class ProfileImageCubit extends Cubit<ProfileState> {
-  ProfileImageCubit() : super(ProfileInitial()) {
-    fetchProfileImageUrl();
-  }
+class ProfileCubit extends Cubit<ProfileState> {
+  ProfileCubit() : super(ProfileInitial());
 
   final ImagePicker _picker = ImagePicker();
   final _firebaseStorage = FirebaseStorage.instance;
@@ -82,6 +77,58 @@ class ProfileImageCubit extends Cubit<ProfileState> {
     }
   }
 
+  Future<void> addToFavorites(BookModel book) async {
+    try {
+      // Fetch user's favorites list from the database
+      final snapshot = await _firestore
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.email)
+          .get();
+
+      final data = snapshot.data();
+      List<String> favorites = List<String>.from(data?['favorites'] ?? []);
+
+      // Check if the book is already in favorites
+      if (!favorites.contains(book.id)) {
+        favorites.add(book.id.toString()); // Add book to favorites list
+        await _updateFavorites(
+            favorites); // Update favorites list in the database
+        emit(FavouriteItem( book.id!)); // Emit FavouriteItem state
+      }
+    } catch (error) {}
+  }
+
+  Future<void> _updateFavorites(List<String> favorites) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.email)
+          .set({'favorites': favorites}, SetOptions(merge: true));
+    } catch (error) {
+      throw ('Failed to update favorites: $error');
+    }
+  }
+
+  Future<void> checkFavoriteStatus(String bookId) async {
+    try {
+      // Fetch user's favorites list from the database
+      final snapshot = await _firestore
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.email)
+          .get();
+
+      final data = snapshot.data();
+      List<String> favorites = List<String>.from(data?['favorites'] ?? []);
+
+      // Check if the book is in favorites
+      if (favorites.contains(bookId)) {
+        emit(FavouriteItem( bookId)); // Emit FavouriteItem state
+      }
+    } catch (error) {
+      throw ('Failed to check favorite status: $error');
+    }
+  }
+
   void reset() {
     emit(ProfileInitial());
   }
@@ -94,7 +141,7 @@ class ProfileImageCubit extends Cubit<ProfileState> {
           .get();
 
       final data = snapshot.data();
-      final userName = data?[kUserName] as String?;
+      final userName = data?['userName'] as String?;
 
       if (userName != null) {
         return userName;
@@ -106,13 +153,14 @@ class ProfileImageCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<void> signOut(BuildContext context) async {
+  Future<void> signOut() async {
+    emit(SignOutLoading());
     try {
       await FirebaseAuth.instance.signOut();
       await _saveLoginState(false);
-      GoRouter.of(context).go(AppRouter.kLoginView);
+      emit(SignOutSuccess());
     } catch (error) {
-      throw ('Failed to sign out: $error');
+      emit(SignOutFailure('Something wrong'));
     }
   }
 

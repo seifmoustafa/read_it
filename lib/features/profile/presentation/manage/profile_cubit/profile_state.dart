@@ -38,3 +38,9 @@ class SignOutFailure extends ProfileState {
 
   const SignOutFailure(this.errMessage);
 }
+
+class FavouriteItem extends ProfileState {
+  final String bookId;
+
+  const FavouriteItem(this.bookId);
+}
