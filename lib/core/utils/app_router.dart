@@ -13,6 +13,7 @@ import 'package:read_it/features/search/data/repos/search_repos_implementation.d
 import 'package:read_it/features/auth/presentation/views/register/register_view.dart';
 import 'package:read_it/features/auth/presentation/manage/login_cubit/login_cubit.dart';
 import 'package:read_it/features/profile/presentation/views/profile_view/profile_view.dart';
+import 'package:read_it/features/profile/presentation/views/favorite_view/favorite_view.dart';
 import 'package:read_it/features/auth/presentation/manage/register_cubit/register_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/auth/presentation/views/reset_password/reset_password_view.dart';
@@ -101,7 +102,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kFavoriteView,
-      builder: (context, state) => const ProfileView(),
+      builder: (context, state) => const FavoriteView(),
     )
   ]);
 }
