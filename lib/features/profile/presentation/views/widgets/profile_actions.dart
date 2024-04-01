@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/sign_out.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_container.dart';
+import 'package:read_it/features/profile/presentation/views/widgets/custom_sign_out.dart';
+import 'package:read_it/features/profile/presentation/views/widgets/custom_favorite_section.dart';
 
 class ProfileActions extends StatelessWidget {
   const ProfileActions({super.key});
@@ -8,19 +8,16 @@ class ProfileActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SignOut(),
         SizedBox(
           height: 16,
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 24.0),
-          child: CustomContainer(
-            firstIcon: Icons.settings,
-            action: 'Settings',
-          ),
+        CustomFavoriteSection(),
+        SizedBox(
+          height: 16,
         ),
+        CustomSignOut(),
       ],
     );
   }

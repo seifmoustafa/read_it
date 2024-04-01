@@ -31,26 +31,34 @@ class ContainerDetails extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(firstIcon),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Icon(firstIcon),
+              ),
               const SizedBox(
                 width: 8,
               ),
               Text(
                 action,
-                style: Styles.textStyle14.copyWith(
+                style: Styles.textStyle16.copyWith(
                   color: actionColor ?? Colors.black,
                 ),
               ),
               secIcon != null
                   ? SizedBox(
-                      width: MediaQuery.of(context).size.width * .5,
+                      width: MediaQuery.of(context).size.width * .4,
                     )
                   : const SizedBox(
                       width: 16,
                     ),
               const Spacer(),
               secIcon != null
-                  ? Icon(secIcon)
+                  ? CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(.5),
+                      radius: 20,
+                      child: Icon(
+                        secIcon,
+                      ))
                   : const SizedBox(
                       width: 5,
                     ),

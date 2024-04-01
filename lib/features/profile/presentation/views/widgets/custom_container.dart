@@ -19,12 +19,14 @@ class CustomContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return secIcon != null
         ? ContainerDetails(
+            onTap: onTap,
             firstIcon: firstIcon,
             action: action,
             actionColor: actionColor,
             secIcon: secIcon)
         : Center(
             child: ContainerDetails(
+                onTap: onTap,
                 firstIcon: firstIcon,
                 action: action,
                 actionColor: actionColor,
