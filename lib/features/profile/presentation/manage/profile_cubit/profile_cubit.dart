@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:read_it/constants.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,11 +9,12 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit() : super(ProfileInitial());
+  ProfileCubit() : super(ProfileInitial()) {
+    fetchProfileImageUrl();
+  }
 
   final ImagePicker _picker = ImagePicker();
   final _firebaseStorage = FirebaseStorage.instance;
@@ -93,7 +95,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         favorites.add(book.id.toString()); // Add book to favorites list
         await _updateFavorites(
             favorites); // Update favorites list in the database
-        emit(FavouriteItem( book.id!)); // Emit FavouriteItem state
+        emit(FavouriteItem(book.id!)); // Emit FavouriteItem state
       }
     } catch (error) {}
   }
@@ -122,7 +124,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
       // Check if the book is in favorites
       if (favorites.contains(bookId)) {
-        emit(FavouriteItem( bookId)); // Emit FavouriteItem state
+        emit(FavouriteItem(bookId)); // Emit FavouriteItem state
       }
     } catch (error) {
       throw ('Failed to check favorite status: $error');
@@ -141,7 +143,7 @@ class ProfileCubit extends Cubit<ProfileState> {
           .get();
 
       final data = snapshot.data();
-      final userName = data?['userName'] as String?;
+      final userName = data?[kUserName] as String?;
 
       if (userName != null) {
         return userName;
