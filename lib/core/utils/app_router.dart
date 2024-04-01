@@ -10,11 +10,13 @@ import 'package:read_it/features/profile/presentation/views/profile_view.dart';
 import 'package:read_it/features/auth/presentation/views/login/login_view.dart';
 import 'package:read_it/features/home/data/repos/home_repo_implementation.dart';
 import 'package:read_it/features/home/presentation/views/book_details_view.dart';
+import 'package:read_it/features/search/data/repos/search_repos_implementation.dart';
 import 'package:read_it/features/auth/presentation/views/register/register_view.dart';
 import 'package:read_it/features/auth/presentation/manage/login_cubit/login_cubit.dart';
 import 'package:read_it/features/auth/presentation/manage/register_cubit/register_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
 import 'package:read_it/features/auth/presentation/views/reset_password/reset_password_view.dart';
+import 'package:read_it/features/search/presentation/manage/search_cubit/searched_book_cubit.dart';
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
 import 'package:read_it/features/auth/presentation/manage/reset_password_cubit/reset_password_cubit.dart';
@@ -71,7 +73,11 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kSearchView,
-      builder: (context, state) => const SearchView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => SearchedBookCubit(getIt.get<SearchReposImpl>())
+          ..fetchSearchedBooks(),
+        child: const SearchView(),
+      ),
     ),
     GoRoute(
       path: kBookDetailsView,

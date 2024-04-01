@@ -9,6 +9,9 @@ class CustomSearchTextField extends StatelessWidget {
     this.prefixOnPressed,
     this.suffixOnPressed,
     this.focusNode,
+    this.onChanged,
+    this.onSubmitted,
+    this.controller,
   });
   final bool readOnly;
   final IconData? prefixIcon;
@@ -16,9 +19,15 @@ class CustomSearchTextField extends StatelessWidget {
   final void Function()? prefixOnPressed;
   final void Function()? suffixOnPressed;
   final FocusNode? focusNode;
+  final void Function(String)? onChanged;
+  final void Function(String)? onSubmitted;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
+      onChanged: onChanged,
+      onSubmitted: onChanged,
       focusNode: focusNode,
       readOnly: readOnly,
       decoration: InputDecoration(
