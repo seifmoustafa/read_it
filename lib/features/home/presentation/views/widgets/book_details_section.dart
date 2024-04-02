@@ -8,8 +8,7 @@ import 'package:read_it/features/home/presentation/manage/book_details_cubit/boo
 
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection(
-      {Key? key, required this.book, required this.isFavorite})
-      : super(key: key);
+      {super.key, required this.book, required this.isFavorite});
 
   final BookModel book;
   final bool isFavorite;
@@ -70,7 +69,13 @@ class BookDetailsSection extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                BlocProvider.of<BookdetailsCubit>(context).addToFavorites(book);
+                if (isFavorite) {
+                  BlocProvider.of<BookdetailsCubit>(context)
+                      .deleteFromFavorites(book.id!);
+                } else {
+                  BlocProvider.of<BookdetailsCubit>(context)
+                      .addToFavorites(book);
+                }
               },
               icon: Icon(
                 Icons.favorite,

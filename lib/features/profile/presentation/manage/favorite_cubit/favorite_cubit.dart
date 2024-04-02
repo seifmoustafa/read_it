@@ -19,13 +19,12 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       emit(FavoriteItemsLoading());
 
       final snapshot = await _firestore
-          .collection('users')
+          .collection(kUserCollection)
           .doc(FirebaseAuth.instance.currentUser!.email)
           .get();
 
       final data = snapshot.data();
-      List<String> favoriteBookIds =
-          List<String>.from(data?['favorites'] ?? []);
+      List<String> favoriteBookIds = List<String>.from(data?[kFavorites] ?? []);
 
       List<BookModel> favoriteBooks = await _retrieveBooks(favoriteBookIds);
 

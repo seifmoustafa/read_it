@@ -38,7 +38,7 @@ class CustomTwoFloationgButtons extends StatelessWidget {
             height: 56, // Adjust as needed
             child: FloatingActionButton(
               onPressed: () {
-                GoRouter.of(context).push(AppRouter.kProfileView);
+                GoRouter.of(context).pushReplacement(AppRouter.kProfileView);
               },
               backgroundColor: Colors.transparent, // Remove background color
               elevation: 0, // Remove elevation

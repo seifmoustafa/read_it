@@ -11,6 +11,7 @@ const kTextFillColor = Color(0xffFFFFFF);
 const kTextFormColor = Color(0xff818B89);
 const kButtonColor = Colors.black;
 const kUserCollection = 'users';
+const kFavorites = 'favorites';
 const kUserName = 'user name';
 const kEmail = 'email';
 const kPhoneNumber = 'Phone number';
