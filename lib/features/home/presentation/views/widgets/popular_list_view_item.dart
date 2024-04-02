@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/features/home/presentation/views/widgets/custom_book_image.dart';
 
-class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key, required this.book});
+class PopularBookListViewItem extends StatelessWidget {
+  const PopularBookListViewItem({super.key, required this.book});
   final BookModel book;
   @override
   Widget build(BuildContext context) {

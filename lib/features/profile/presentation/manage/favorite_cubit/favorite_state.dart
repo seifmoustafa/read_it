@@ -9,10 +9,10 @@ abstract class FavoriteState extends Equatable {
 
 class FavoriteInitial extends FavoriteState {}
 
-class RetriveItemsSuccess extends FavoriteState {
+class FavoriteItemsSuccess extends FavoriteState {
   final List<BookModel> books;
 
-  const RetriveItemsSuccess(this.books);
+  const FavoriteItemsSuccess(this.books);
 }
 
 class FavoriteItemsLoading extends FavoriteState {}

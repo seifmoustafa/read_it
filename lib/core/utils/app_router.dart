@@ -8,6 +8,7 @@ import 'package:read_it/features/search/presentation/views/search_view.dart';
 import 'package:read_it/features/splash/presentation/views/splash_view.dart';
 import 'package:read_it/features/auth/presentation/views/login/login_view.dart';
 import 'package:read_it/features/home/data/repos/home_repo_implementation.dart';
+import 'package:read_it/features/profile/data/profile_repos_implementation.dart';
 import 'package:read_it/features/home/presentation/views/book_details_view.dart';
 import 'package:read_it/features/search/data/repos/search_repos_implementation.dart';
 import 'package:read_it/features/auth/presentation/views/register/register_view.dart';
@@ -16,6 +17,7 @@ import 'package:read_it/features/profile/presentation/views/profile_view/profile
 import 'package:read_it/features/profile/presentation/views/favorite_view/favorite_view.dart';
 import 'package:read_it/features/auth/presentation/manage/register_cubit/register_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_cubit/profile_cubit.dart';
+import 'package:read_it/features/profile/presentation/manage/favorite_cubit/favorite_cubit.dart';
 import 'package:read_it/features/auth/presentation/views/reset_password/reset_password_view.dart';
 import 'package:read_it/features/search/presentation/manage/search_cubit/searched_book_cubit.dart';
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
@@ -102,7 +104,12 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kFavoriteView,
-      builder: (context, state) => const FavoriteView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => FavoriteCubit(
+          getIt.get<ProfilReposImpl>(),
+        )..fetchFavoriteItems(),
+        child: const FavoriteView(),
+      ),
     )
   ]);
 }

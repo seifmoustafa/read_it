@@ -30,7 +30,7 @@ class PopularListView extends StatelessWidget {
                           GoRouter.of(context).push(AppRouter.kBookDetailsView,
                               extra: state.books[index]);
                         },
-                        child: BookListViewItem(
+                        child: PopularBookListViewItem(
                           book: state.books[index],
                         ),
                       )),
