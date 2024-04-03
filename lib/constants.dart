@@ -13,6 +13,7 @@ const kButtonColor = Colors.black;
 const kUserCollection = 'users';
 const kFavorites = 'favorites';
 const kUserName = 'user name';
+const kProfileImage = 'profileImageUrl';
 const kEmail = 'email';
 const kPhoneNumber = 'Phone number';
 const kTestImage = 'assets/images/test.png';

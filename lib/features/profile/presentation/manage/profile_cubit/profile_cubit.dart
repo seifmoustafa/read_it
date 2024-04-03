@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:read_it/core/book_model/book_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'profile_state.dart';
@@ -23,12 +22,12 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> fetchProfileImageUrl() async {
     try {
       final snapshot = await _firestore
-          .collection('users')
+          .collection(kUserCollection)
           .doc(FirebaseAuth.instance.currentUser!.email)
           .get();
 
       final data = snapshot.data();
-      final imageUrl = data?['profileImageUrl'] as String?;
+      final imageUrl = data?[kProfileImage] as String?;
 
       if (imageUrl != null) {
         emit(ProfileImagePicked(File(imageUrl))); // Convert URL to File
@@ -71,9 +70,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> _saveImageUrl(String imageUrl) async {
     try {
       await _firestore
-          .collection('users')
+          .collection(kUserCollection)
           .doc(FirebaseAuth.instance.currentUser!.email)
-          .set({'profileImageUrl': imageUrl}, SetOptions(merge: true));
+          .set({kProfileImage: imageUrl}, SetOptions(merge: true));
     } catch (error) {
       throw ('Failed to save image URL: $error');
     }
@@ -86,7 +85,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<String> fetchUserName() async {
     try {
       final snapshot = await _firestore
-          .collection('users')
+          .collection(kUserCollection)
           .doc(FirebaseAuth.instance.currentUser!.email)
           .get();
 
@@ -110,7 +109,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       await _saveLoginState(false);
       emit(SignOutSuccess());
     } catch (error) {
-      emit(SignOutFailure('Something wrong'));
+      emit(const SignOutFailure('Something wrong'));
     }
   }
 
