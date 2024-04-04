@@ -21,6 +21,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> fetchProfileImageUrl() async {
     try {
+      emit(ProfileImageLoading());
       final snapshot = await _firestore
           .collection(kUserCollection)
           .doc(FirebaseAuth.instance.currentUser!.email)

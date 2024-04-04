@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_sign_out.dart';
 import 'package:read_it/features/profile/presentation/views/profile_view/widgets/custom_favorite_section.dart';
+import 'package:read_it/features/profile/presentation/views/profile_view/widgets/profile_details_section.dart';
 
 class ProfileActions extends StatelessWidget {
   const ProfileActions({super.key});
@@ -14,6 +15,10 @@ class ProfileActions extends StatelessWidget {
           height: 16,
         ),
         CustomFavoriteSection(),
+        SizedBox(
+          height: 16,
+        ),
+        ProfileDetailsSection(),
         SizedBox(
           height: 16,
         ),

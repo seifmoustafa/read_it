@@ -22,6 +22,8 @@ class ContainerDetails extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
+          width:
+              secIcon != null ? MediaQuery.of(context).size.width * .8 : null,
           height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
@@ -46,7 +48,7 @@ class ContainerDetails extends StatelessWidget {
               ),
               secIcon != null
                   ? SizedBox(
-                      width: MediaQuery.of(context).size.width * .4,
+                      width: MediaQuery.of(context).size.width * .3,
                     )
                   : const SizedBox(
                       width: 16,
