@@ -38,3 +38,17 @@ class SignOutFailure extends ProfileState {
 
   const SignOutFailure(this.errMessage);
 }
+
+class ProfileDetailsLoading extends ProfileState {}
+
+class ProfileDetailsSuccess extends ProfileState {
+  final String info;
+
+  const ProfileDetailsSuccess(this.info);
+}
+
+class ProfileDetailsFaliure extends ProfileState {
+  final String errMessage;
+
+  const ProfileDetailsFaliure(this.errMessage);
+}

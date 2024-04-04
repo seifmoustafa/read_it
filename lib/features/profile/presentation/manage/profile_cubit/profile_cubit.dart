@@ -83,6 +83,22 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(ProfileInitial());
   }
 
+  Future<void> signOut() async {
+    emit(SignOutLoading());
+    try {
+      await FirebaseAuth.instance.signOut();
+      await _saveLoginState(false);
+      emit(SignOutSuccess());
+    } catch (error) {
+      emit(const SignOutFailure('Something wrong'));
+    }
+  }
+
+  Future<void> _saveLoginState(bool isLoggedIn) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', isLoggedIn);
+  }
+
   Future<String> fetchUserName() async {
     try {
       final snapshot = await _firestore
@@ -101,21 +117,5 @@ class ProfileCubit extends Cubit<ProfileState> {
     } catch (error) {
       throw ('Failed to fetch user name: $error');
     }
-  }
-
-  Future<void> signOut() async {
-    emit(SignOutLoading());
-    try {
-      await FirebaseAuth.instance.signOut();
-      await _saveLoginState(false);
-      emit(SignOutSuccess());
-    } catch (error) {
-      emit(const SignOutFailure('Something wrong'));
-    }
-  }
-
-  Future<void> _saveLoginState(bool isLoggedIn) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isLoggedIn', isLoggedIn);
   }
 }

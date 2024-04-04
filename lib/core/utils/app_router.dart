@@ -24,6 +24,7 @@ import 'package:read_it/features/profile/presentation/views/profile_view/profile
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
 import 'package:read_it/features/auth/presentation/manage/reset_password_cubit/reset_password_cubit.dart';
+import 'package:read_it/features/profile/presentation/manage/profile_details_cubit/profile_details_cubit.dart';
 
 abstract class AppRouter {
   static const kLoginView = '/loginView';
@@ -116,8 +117,8 @@ abstract class AppRouter {
     GoRoute(
       path: kProfileDetails,
       builder: (context, state) => BlocProvider(
-        create: (context) => ProfileCubit(),
-        child: ProfileDetailsView(),
+        create: (context) => ProfileDetailsCubit(),
+        child: const ProfileDetailsView(),
       ),
     ),
   ]);
