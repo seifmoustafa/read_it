@@ -10,7 +10,7 @@ class CustomTitle extends StatelessWidget {
       padding: const EdgeInsets.only(left: 24.0),
       child: Text(
         title,
-        style: Styles.textStyle16.copyWith(
+        style: Styles.textStyle14.copyWith(
             fontWeight: FontWeight.w300, color: Colors.grey.withOpacity(.7)),
       ),
     );

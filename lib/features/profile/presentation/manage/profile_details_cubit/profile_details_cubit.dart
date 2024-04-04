@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:read_it/constants.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,12 +88,17 @@ class ProfileDetailsCubit extends Cubit<ProfileDetailsState> {
       final firstName = userName?.split(' ')[0];
       final lastName = userName?.split(' ')[1];
       final phoneNumber = data?[kPhoneNumber] as String?;
+      final email = data?[kEmail] as String?;
 
-      if (firstName != null && lastName != null && phoneNumber != null) {
+      if (firstName != null &&
+          lastName != null &&
+          phoneNumber != null &&
+          email != null) {
         emit(ProfileDetailSuccess(
           firstName: firstName,
           lastName: lastName,
           phoneNumber: phoneNumber,
+          email: email,
         ));
       } else {
         emit(const ProfileDetailsFailure('Profile details not found'));

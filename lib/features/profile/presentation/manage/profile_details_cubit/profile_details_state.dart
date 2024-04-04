@@ -15,11 +15,13 @@ class ProfileDetailSuccess extends ProfileDetailsState {
   final String firstName;
   final String lastName;
   final String phoneNumber;
+  final String email;
 
   ProfileDetailSuccess(
       {required this.firstName,
       required this.lastName,
-      required this.phoneNumber});
+      required this.phoneNumber,
+      required this.email});
 
   @override
   List<Object> get props => [firstName, lastName, phoneNumber];

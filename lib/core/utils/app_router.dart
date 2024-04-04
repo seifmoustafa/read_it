@@ -21,6 +21,7 @@ import 'package:read_it/features/profile/presentation/manage/favorite_cubit/favo
 import 'package:read_it/features/auth/presentation/views/reset_password/reset_password_view.dart';
 import 'package:read_it/features/search/presentation/manage/search_cubit/searched_book_cubit.dart';
 import 'package:read_it/features/profile/presentation/views/profile_view/profile_details_view.dart';
+import 'package:read_it/features/profile/presentation/views/profile_edit_view/profile_edit_view.dart';
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
 import 'package:read_it/features/auth/presentation/manage/reset_password_cubit/reset_password_cubit.dart';
@@ -37,6 +38,7 @@ abstract class AppRouter {
   static const kWebView = '/customWebView';
   static const kFavoriteView = '/favoriteView';
   static const kProfileDetails = '/profileDetails';
+  static const kProfileEditView='/profileEditView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -120,6 +122,9 @@ abstract class AppRouter {
         create: (context) => ProfileDetailsCubit(),
         child: const ProfileDetailsView(),
       ),
+    ), GoRoute(
+      path: kProfileEditView,
+      builder: (context, state) => const ProfileEditView(),
     ),
   ]);
 }

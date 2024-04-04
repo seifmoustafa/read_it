@@ -29,8 +29,16 @@ class CustomProfileImage extends StatelessWidget {
                       GoRouter.of(context).pushReplacement(path);
                     },
                     imageUrl: state.imageFile!.path);
-              } else {
+              } else if (state is ProfileImageLoading) {
                 return const CustomLoadingIndecator();
+              } else {
+                return CustomProfileImageContainer(
+                  onTap: () async {
+                    final imageCubit = context.read<ProfileCubit>();
+                    await imageCubit.pickImage();
+                    GoRouter.of(context).pushReplacement(path);
+                  },
+                );
               }
             },
           ),

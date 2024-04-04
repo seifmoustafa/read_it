@@ -14,7 +14,7 @@ class CustomProfileTextField extends StatelessWidget {
         enabled: enable,
         decoration: InputDecoration(
             hintText: info,
-            hintStyle: Styles.textStyle20.copyWith(color: Colors.black),
+            hintStyle: Styles.textStyle18.copyWith(color: Colors.black),
             border: const UnderlineInputBorder(
                 borderSide: BorderSide(
               color: Colors.grey,
