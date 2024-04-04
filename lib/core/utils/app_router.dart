@@ -38,7 +38,7 @@ abstract class AppRouter {
   static const kWebView = '/customWebView';
   static const kFavoriteView = '/favoriteView';
   static const kProfileDetails = '/profileDetails';
-  static const kProfileEditView='/profileEditView';
+  static const kProfileEditView = '/profileEditView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -122,9 +122,12 @@ abstract class AppRouter {
         create: (context) => ProfileDetailsCubit(),
         child: const ProfileDetailsView(),
       ),
-    ), GoRoute(
+    ),
+    GoRoute(
       path: kProfileEditView,
-      builder: (context, state) => const ProfileEditView(),
+      builder: (context, state) => MultiBlocProvider(providers: [
+        BlocProvider(create: (context) => ProfileDetailsCubit()),
+      ], child: const ProfileEditView()),
     ),
   ]);
 }

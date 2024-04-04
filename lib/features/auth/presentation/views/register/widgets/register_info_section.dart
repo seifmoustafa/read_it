@@ -3,10 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/functions/custom_snack_bar.dart';
+import 'package:read_it/core/widgets/custom_password_form_text_field.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_button.dart';
 import 'package:read_it/features/auth/presentation/manage/register_cubit/register_cubit.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_form_text_field.dart';
-import 'package:read_it/features/auth/presentation/views/widgets/custom_password_form_text_field.dart';
 
 class RegisterInfoSection extends StatelessWidget {
   const RegisterInfoSection({super.key});
