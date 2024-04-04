@@ -24,6 +24,7 @@ import 'package:read_it/features/profile/presentation/views/profile_view/profile
 import 'package:read_it/features/profile/presentation/views/profile_edit_view/profile_edit_view.dart';
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
+import 'package:read_it/features/profile/presentation/manage/profile_edit_cubit/profile_edit_cubit.dart';
 import 'package:read_it/features/auth/presentation/manage/reset_password_cubit/reset_password_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_details_cubit/profile_details_cubit.dart';
 
@@ -127,6 +128,7 @@ abstract class AppRouter {
       path: kProfileEditView,
       builder: (context, state) => MultiBlocProvider(providers: [
         BlocProvider(create: (context) => ProfileDetailsCubit()),
+        BlocProvider(create: (context) => ProfileEditCubit()),
       ], child: const ProfileEditView()),
     ),
   ]);

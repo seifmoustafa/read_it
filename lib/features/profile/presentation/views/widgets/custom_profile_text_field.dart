@@ -5,22 +5,25 @@ class CustomProfileTextField extends StatelessWidget {
   const CustomProfileTextField(
       {super.key,
       this.enable = false,
-      required this.info,
+      this.info,
       this.obscureText = false,
       this.suffixIcon,
       this.controller,
-      this.onPressed});
+      this.onPressed,
+      this.onSubmitted});
   final bool enable;
-  final String info;
+  final String? info;
   final bool obscureText;
   final IconData? suffixIcon;
   final TextEditingController? controller;
   final void Function()? onPressed;
+  final void Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: TextField(
+        onChanged: onSubmitted,
         controller: controller,
         obscureText: obscureText,
         enabled: enable,
