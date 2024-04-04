@@ -23,6 +23,7 @@ import 'package:read_it/features/search/presentation/manage/search_cubit/searche
 import 'package:read_it/features/profile/presentation/views/profile_view/profile_details_view.dart';
 import 'package:read_it/features/profile/presentation/views/profile_edit_view/profile_edit_view.dart';
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
+import 'package:read_it/features/profile/presentation/views/profile_edit_view/password_edit_view.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_edit_cubit/profile_edit_cubit.dart';
 import 'package:read_it/features/auth/presentation/manage/reset_password_cubit/reset_password_cubit.dart';
@@ -40,6 +41,7 @@ abstract class AppRouter {
   static const kFavoriteView = '/favoriteView';
   static const kProfileDetails = '/profileDetails';
   static const kProfileEditView = '/profileEditView';
+  static const kPasswordEditView = '/passwordEditView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -130,6 +132,13 @@ abstract class AppRouter {
         BlocProvider(create: (context) => ProfileDetailsCubit()),
         BlocProvider(create: (context) => ProfileEditCubit()),
       ], child: const ProfileEditView()),
+    ),
+    GoRoute(
+      path: kPasswordEditView,
+      builder: (context, state) => BlocProvider(
+        create: (context) => ProfileEditCubit(),
+        child: const PasswordEditView(),
+      ),
     ),
   ]);
 }

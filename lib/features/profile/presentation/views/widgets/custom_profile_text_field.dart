@@ -28,9 +28,11 @@ class CustomProfileTextField extends StatelessWidget {
         obscureText: obscureText,
         enabled: enable,
         decoration: InputDecoration(
-            suffixIcon: IconButton(
-              icon: Icon(suffixIcon),
-              onPressed: onPressed,
+            suffixIcon: GestureDetector(
+              onTap: onPressed,
+              child: Icon(
+                suffixIcon,
+              ),
             ),
             hintText: info,
             hintStyle: Styles.textStyle18.copyWith(color: Colors.black),

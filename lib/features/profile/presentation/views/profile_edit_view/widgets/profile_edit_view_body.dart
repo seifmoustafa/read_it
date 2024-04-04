@@ -12,6 +12,7 @@ import 'package:read_it/features/profile/presentation/views/widgets/custom_profi
 import 'package:read_it/features/profile/presentation/views/widgets/custom_profile_text_field.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_edit_cubit/profile_edit_cubit.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_details_cubit/profile_details_cubit.dart';
+import 'package:read_it/features/profile/presentation/views/profile_edit_view/widgets/custom_edit_password_container.dart';
 
 class ProfileEditViewBody extends StatelessWidget {
   const ProfileEditViewBody({Key? key});
@@ -77,10 +78,13 @@ class ProfileEditViewBody extends StatelessWidget {
                 },
               ),
               const CustomTitle(title: 'Password'),
-              const CustomProfileTextField(
-                enable: false,
-                info: '***********',
-                suffixIcon: Icons.edit,
+              const SizedBox(
+                height: 16,
+              ),
+              CustomPasswordEditContainer(
+                onPressed: () {
+                  GoRouter.of(context).push(AppRouter.kPasswordEditView);
+                },
               ),
               const SizedBox(height: 86),
               BlocConsumer<ProfileEditCubit, ProfileEditState>(
@@ -98,7 +102,6 @@ class ProfileEditViewBody extends StatelessWidget {
                     buttonName: 'Submit',
                     isLoading: state is ProfileEditLoading,
                     onTap: () {
-                      // Dispatch events to edit user name and phone number
                       BlocProvider.of<ProfileEditCubit>(context)
                           .editUserName(userName!);
                       BlocProvider.of<ProfileEditCubit>(context)
