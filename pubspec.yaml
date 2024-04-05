@@ -59,7 +59,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo_light.png"
+  image_path: "assets/images/logo.jpeg"
 
   flutter_lints: ^3.0.0
   flutter_test:
