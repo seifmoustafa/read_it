@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:read_it/constants.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

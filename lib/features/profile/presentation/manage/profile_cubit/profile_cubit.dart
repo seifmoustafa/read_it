@@ -60,7 +60,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       final ref = _firebaseStorage
           .ref()
           .child('user_images')
-          .child(FirebaseAuth.instance.currentUser!.uid!)
+          .child(FirebaseAuth.instance.currentUser!.uid)
           .child('profile_image.jpg');
 
       final uploadTask = await ref.putFile(File(filePath));
