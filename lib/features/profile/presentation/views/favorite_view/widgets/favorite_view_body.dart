@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_app_bar.dart';
+import 'package:read_it/core/widgets/custom_app_bar.dart';
 import 'package:read_it/features/profile/presentation/manage/favorite_cubit/favorite_cubit.dart';
 import 'package:read_it/features/profile/presentation/views/favorite_view/widgets/favorite_item_list_view.dart';
 

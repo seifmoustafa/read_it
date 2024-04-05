@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:read_it/core/utils/styles.dart';
+import 'package:read_it/core/utils/app_router.dart';
+import 'package:read_it/core/widgets/custom_app_bar.dart';
 import 'package:read_it/core/functions/custom_snack_bar.dart';
 import 'package:read_it/core/widgets/custom_password_form_text_field.dart';
 import 'package:read_it/features/auth/presentation/views/widgets/custom_button.dart';
 import 'package:read_it/features/profile/presentation/views/widgets/custom_title.dart';
-import 'package:read_it/features/profile/presentation/views/widgets/custom_app_bar.dart';
 import 'package:read_it/features/profile/presentation/manage/profile_edit_cubit/profile_edit_cubit.dart';
 
 class PasswordEditViewBody extends StatelessWidget {
@@ -45,6 +47,23 @@ class PasswordEditViewBody extends StatelessWidget {
             onChanged: (data) {
               newPassword = data;
             },
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 220),
+            child: GestureDetector(
+              onTap: () {
+                GoRouter.of(context)
+                    .pushReplacement(AppRouter.kResetPasswordView);
+              },
+              child: Text(
+                'forgot your password?',
+                style:
+                    Styles.textStyle14.copyWith(color: const Color(0xff818B89)),
+              ),
+            ),
           ),
           const SizedBox(
             height: 120,
