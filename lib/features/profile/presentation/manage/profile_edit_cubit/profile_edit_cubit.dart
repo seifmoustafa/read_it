@@ -16,7 +16,7 @@ class ProfileEditCubit extends Cubit<ProfileEditState> {
       emit(ProfileEditLoading());
       await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .set(
         {kUserName: userName},
         SetOptions(merge: true),
@@ -32,7 +32,7 @@ class ProfileEditCubit extends Cubit<ProfileEditState> {
       emit(ProfileEditLoading());
       await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .set(
         {kPhoneNumber: phoneNumber},
         SetOptions(merge: true),
@@ -47,7 +47,7 @@ class ProfileEditCubit extends Cubit<ProfileEditState> {
     try {
       emit(ProfileEditLoading());
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: FirebaseAuth.instance.currentUser!.email!,
+        email: FirebaseAuth.instance.currentUser!.uid,
         password: oldPassword,
       );
       await FirebaseAuth.instance.currentUser!.updatePassword(newPassword);

@@ -20,7 +20,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();

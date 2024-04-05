@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ReadIt</string>
+    <string name="facebook_app_id">860826159142162</string>
+    <string name="fb_login_protocol_scheme">fbe3355a13adedb6bb3d6707af3e4dd503</string>
+    <string name="facebook_client_token">56789</string>
+</resources>

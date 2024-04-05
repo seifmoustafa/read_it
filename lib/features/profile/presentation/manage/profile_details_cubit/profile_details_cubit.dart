@@ -18,7 +18,7 @@ class ProfileDetailsCubit extends Cubit<ProfileDetailsState> {
   //     emit(ProfiledetailsLoading());
   //     final snapshot = await _firestore
   //         .collection(kUserCollection)
-  //         .doc(FirebaseAuth.instance.currentUser!.email)
+  //         .doc(FirebaseAuth.instance.currentUser!.uid)
   //         .get();
   //     final data = snapshot.data();
   //     final userName = data?[kUserName] as String?;
@@ -39,7 +39,7 @@ class ProfileDetailsCubit extends Cubit<ProfileDetailsState> {
 
   //     final snapshot = await _firestore
   //         .collection(kUserCollection)
-  //         .doc(FirebaseAuth.instance.currentUser!.email)
+  //         .doc(FirebaseAuth.instance.currentUser!.uid)
   //         .get();
   //     final data = snapshot.data();
   //     final userName = data?[kUserName] as String?;
@@ -60,7 +60,7 @@ class ProfileDetailsCubit extends Cubit<ProfileDetailsState> {
 
   //     final snapshot = await _firestore
   //         .collection(kUserCollection)
-  //         .doc(FirebaseAuth.instance.currentUser!.email)
+  //         .doc(FirebaseAuth.instance.currentUser!.uid)
   //         .get();
   //     final data = snapshot.data();
   //     final phoneNumber = data?[kPhoneNumber] as String?;
@@ -80,7 +80,7 @@ class ProfileDetailsCubit extends Cubit<ProfileDetailsState> {
 
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();

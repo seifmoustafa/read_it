@@ -18,7 +18,7 @@ class BookdetailsCubit extends Cubit<BookdetailsState> {
       // Fetch user's favorites list from the database
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();
@@ -38,7 +38,7 @@ class BookdetailsCubit extends Cubit<BookdetailsState> {
       // Fetch user's favorites list from the database
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();
@@ -59,7 +59,7 @@ class BookdetailsCubit extends Cubit<BookdetailsState> {
       // Fetch user's favorites list from the database
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();
@@ -81,7 +81,7 @@ class BookdetailsCubit extends Cubit<BookdetailsState> {
     try {
       await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .set({kFavorites: favorites}, SetOptions(merge: true));
     } catch (error) {
       throw ('Failed to update favorites: $error');

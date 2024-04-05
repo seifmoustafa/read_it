@@ -24,7 +24,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ProfileImageLoading());
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();
@@ -60,7 +60,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       final ref = _firebaseStorage
           .ref()
           .child('user_images')
-          .child(FirebaseAuth.instance.currentUser!.email!)
+          .child(FirebaseAuth.instance.currentUser!.uid!)
           .child('profile_image.jpg');
 
       final uploadTask = await ref.putFile(File(filePath));
@@ -74,7 +74,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     try {
       await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .set({kProfileImage: imageUrl}, SetOptions(merge: true));
     } catch (error) {
       throw ('Failed to save image URL: $error');
@@ -105,7 +105,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     try {
       final snapshot = await _firestore
           .collection(kUserCollection)
-          .doc(FirebaseAuth.instance.currentUser!.email)
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .get();
 
       final data = snapshot.data();
