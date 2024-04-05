@@ -42,12 +42,14 @@ class ProfileEditViewBody extends StatelessWidget {
                         .fetchProfileDetails();
                     return const CircularProgressIndicator();
                   } else if (state is ProfileDetailSuccess) {
+                    userName = state.userName;
+                    phoneNumber = state.phoneNumber;
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const CustomTitle(title: 'User Name'),
                         CustomProfileTextField(
-                          onSubmitted: (data) {
+                          onChanged: (data) {
                             userName = data;
                           },
                           controller:
@@ -57,7 +59,7 @@ class ProfileEditViewBody extends StatelessWidget {
                         const SizedBox(height: 16),
                         const CustomTitle(title: 'Phone Number'),
                         CustomProfileTextField(
-                          onSubmitted: (data) {
+                          onChanged: (data) {
                             phoneNumber = data;
                           },
                           enable: true,
