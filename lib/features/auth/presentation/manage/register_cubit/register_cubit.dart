@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:read_it/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'register_state.dart';
@@ -14,8 +14,8 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   // Register user with email and password
   Future<void> registerUserWithEmail({
-    required String firstName,
-    required String lastName,
+    required String userName,
+    
     required String phoneNumber,
     required String email,
     required String password,
@@ -27,8 +27,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
       await saveUser(
           email: email,
-          firstName: firstName,
-          lastName: lastName,
+          userName: userName,
           phoneNumber: phoneNumber);
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
@@ -65,8 +64,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         final user = userCredential.user!;
         await saveUser(
             email: user.email!,
-            firstName: user.displayName!.split(' ')[0],
-            lastName: user.displayName!.split(' ')[1],
+            userName: user.displayName!,
             phoneNumber:
                 ''); // You may not have phone number for Google sign-up
         await _saveLoginState(true);
@@ -81,8 +79,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   Future<void> saveUser({
     required String email,
-    required String firstName,
-    required String lastName,
+    required String userName,
     required String phoneNumber,
   }) async {
     CollectionReference collectionReference =
@@ -90,7 +87,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       kUserCollection,
     );
     await collectionReference.doc(email).set({
-      kUserName: '$firstName $lastName',
+      kUserName: userName,
       kEmail: email,
       kPhoneNumber: phoneNumber,
     });

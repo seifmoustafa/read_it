@@ -15,8 +15,7 @@ class RegisterInfoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<FormState> formkey = GlobalKey();
 
-    String? firstName;
-    String? lastName;
+    String? userName;
     String? phoneNumber;
     String? email;
     String? password;
@@ -40,18 +39,9 @@ class RegisterInfoSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CustomFormTextField(
-                hintText: 'First Name',
+                hintText: 'User Name',
                 onChanged: (data) {
-                  firstName = data;
-                },
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              CustomFormTextField(
-                hintText: 'Last Name',
-                onChanged: (data) {
-                  lastName = data;
+                  userName = data;
                 },
               ),
               const SizedBox(
@@ -96,8 +86,7 @@ class RegisterInfoSection extends StatelessWidget {
                           .registerUserWithEmail(
                         email: email!,
                         password: password!,
-                        firstName: firstName!,
-                        lastName: lastName!,
+                        userName: userName!,
                         phoneNumber: phoneNumber!,
                       );
                     }

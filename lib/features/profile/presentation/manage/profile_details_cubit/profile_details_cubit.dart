@@ -85,18 +85,12 @@ class ProfileDetailsCubit extends Cubit<ProfileDetailsState> {
 
       final data = snapshot.data();
       final userName = data?[kUserName] as String?;
-      final firstName = userName?.split(' ')[0];
-      final lastName = userName?.split(' ')[1];
       final phoneNumber = data?[kPhoneNumber] as String?;
       final email = data?[kEmail] as String?;
 
-      if (firstName != null &&
-          lastName != null &&
-          phoneNumber != null &&
-          email != null) {
+      if (userName != null && phoneNumber != null && email != null) {
         emit(ProfileDetailSuccess(
-          firstName: firstName,
-          lastName: lastName,
+          userName: userName,
           phoneNumber: phoneNumber,
           email: email,
         ));

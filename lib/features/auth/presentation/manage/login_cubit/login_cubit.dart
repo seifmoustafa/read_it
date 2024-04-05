@@ -36,8 +36,8 @@ class LoginCubit extends Cubit<LoginState> {
         if (isFirstTimeGoogleSignIn) {
           await saveUser(
             email: userCredential.user!.email!,
-            firstName: '', // Add first name if available
-            lastName: '', // Add last name if available
+            userName: userCredential
+                .user!.displayName!, // Add first name if available
             phoneNumber: '', // Add phone number if available
           );
         }
@@ -93,8 +93,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> saveUser({
     required String email,
-    required String firstName,
-    required String lastName,
+    required String userName,
     required String phoneNumber,
   }) async {
     CollectionReference collectionReference =
@@ -102,7 +101,7 @@ class LoginCubit extends Cubit<LoginState> {
       kUserCollection,
     );
     await collectionReference.doc(email).set({
-      kUserName: '$firstName $lastName',
+      kUserName: userName,
       kEmail: email,
       kPhoneNumber: phoneNumber,
     });
@@ -124,8 +123,8 @@ class LoginCubit extends Cubit<LoginState> {
         if (isFirstTimeFacebookSignIn) {
           await saveUser(
             email: userCredential.user!.email!,
-            firstName: '', // Add first name if available
-            lastName: '', // Add last name if available
+            userName: userCredential
+                .user!.displayName!, // Add first name if available
             phoneNumber: '', // Add phone number if available
           );
         }

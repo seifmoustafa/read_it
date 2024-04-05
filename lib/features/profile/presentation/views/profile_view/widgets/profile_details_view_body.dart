@@ -39,16 +39,10 @@ class ProfileDetailsViewBody extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomTitle(title: 'First Name'),
+                      const CustomTitle(title: 'User Name'),
                       CustomProfileTextField(
                         enable: false,
-                        info: state.firstName,
-                      ),
-                      const SizedBox(height: 16),
-                      const CustomTitle(title: 'Last Name'),
-                      CustomProfileTextField(
-                        enable: false,
-                        info: state.lastName,
+                        info: state.userName,
                       ),
                       const SizedBox(height: 16),
                       const CustomTitle(title: 'Phone Number'),

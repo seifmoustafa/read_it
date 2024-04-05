@@ -32,6 +32,8 @@ class ProfileCubit extends Cubit<ProfileState> {
 
       if (imageUrl != null) {
         emit(ProfileImagePicked(File(imageUrl))); // Convert URL to File
+      } else {
+        emit(ProfileImageNotPicked());
       }
     } catch (error) {
       emit(const ProfileImageFailure('Failed to fetch profile image'));

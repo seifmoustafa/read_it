@@ -29,6 +29,8 @@ class ProfileImageFailure extends ProfileState {
   const ProfileImageFailure(this.errMessage);
 }
 
+class ProfileImageNotPicked extends ProfileState {}
+
 class SignOutSuccess extends ProfileState {}
 
 class SignOutLoading extends ProfileState {}

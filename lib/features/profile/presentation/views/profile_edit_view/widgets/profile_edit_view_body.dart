@@ -50,8 +50,8 @@ class ProfileEditViewBody extends StatelessWidget {
                           onSubmitted: (data) {
                             userName = data;
                           },
-                          controller: TextEditingController(
-                              text: '${state.firstName} ${state.lastName}'),
+                          controller:
+                              TextEditingController(text: state.userName),
                           enable: true,
                         ),
                         const SizedBox(height: 16),
