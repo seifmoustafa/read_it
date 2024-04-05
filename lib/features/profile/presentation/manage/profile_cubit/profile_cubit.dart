@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -86,15 +87,23 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> signOut() async {
-    emit(SignOutLoading());
-    try {
-      await FirebaseAuth.instance.signOut();
-      await _saveLoginState(false);
-      emit(SignOutSuccess());
-    } catch (error) {
-      emit(const SignOutFailure('Something wrong'));
-    }
+  emit(SignOutLoading());
+  try {
+    // Sign out from Firebase
+    await FirebaseAuth.instance.signOut();
+    
+    // Sign out from Google
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
+
+    // Clear login state
+    await _saveLoginState(false);
+
+    emit(SignOutSuccess());
+  } catch (error) {
+    emit(const SignOutFailure('Something went wrong'));
   }
+}
 
   Future<void> _saveLoginState(bool isLoggedIn) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

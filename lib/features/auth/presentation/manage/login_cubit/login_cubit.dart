@@ -18,7 +18,14 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> signInWithGoogle() async {
     emit(LoginLoading());
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+
+      // Sign out the current user if there is any
+      await FirebaseAuth.instance.signOut();
+
+      // Prompt the user to select a Google account
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
       if (googleUser != null) {
         final GoogleSignInAuthentication googleAuth =
             await googleUser.authentication;
@@ -36,16 +43,15 @@ class LoginCubit extends Cubit<LoginState> {
         if (isFirstTimeGoogleSignIn) {
           await saveUser(
             email: userCredential.user!.email!,
-            userName: userCredential
-                .user!.displayName!, // Add first name if available
-            phoneNumber: '', // Add phone number if available
+            userName: userCredential.user!.displayName!,
+            phoneNumber: ' ',
           );
         }
 
         await _saveLoginState(true);
         emit(LoginSuccess());
       } else {
-        emit(LoginFailure(errMessage: 'Google sign-in failed'));
+        emit(LoginFailure(errMessage: 'Google sign-in canceled'));
       }
     } catch (e) {
       log(e.toString());
@@ -81,7 +87,7 @@ class LoginCubit extends Cubit<LoginState> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     if (!prefs.containsKey('googleSignIn')) {
       isFirstTimeGoogleSignIn = true;
-      prefs.setBool('googleSignIn', true);
+      // prefs.setBool('googleSignIn', true);
     }
     return isFirstTimeGoogleSignIn;
   }
@@ -100,7 +106,7 @@ class LoginCubit extends Cubit<LoginState> {
         FirebaseFirestore.instance.collection(
       kUserCollection,
     );
-    await collectionReference.doc(email).set({
+    await collectionReference.doc(FirebaseAuth.instance.currentUser!.uid).set({
       kUserName: userName,
       kEmail: email,
       kPhoneNumber: phoneNumber,
