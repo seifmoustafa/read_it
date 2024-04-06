@@ -15,7 +15,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   // Register user with email and password
   Future<void> registerUserWithEmail({
     required String userName,
-    
     required String phoneNumber,
     required String email,
     required String password,
@@ -26,9 +25,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       await _saveLoginState(true);
 
       await saveUser(
-          email: email,
-          userName: userName,
-          phoneNumber: phoneNumber);
+          email: email, userName: userName, phoneNumber: phoneNumber);
       emit(RegisterSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -86,7 +83,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         FirebaseFirestore.instance.collection(
       kUserCollection,
     );
-    await collectionReference.doc(email).set({
+    await collectionReference.doc(FirebaseAuth.instance.currentUser!.uid).set({
       kUserName: userName,
       kEmail: email,
       kPhoneNumber: phoneNumber,

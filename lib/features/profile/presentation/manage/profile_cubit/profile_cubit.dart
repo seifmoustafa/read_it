@@ -87,23 +87,32 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> signOut() async {
-  emit(SignOutLoading());
-  try {
-    // Sign out from Firebase
-    await FirebaseAuth.instance.signOut();
-    
-    // Sign out from Google
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-    await googleSignIn.signOut();
+    emit(SignOutLoading());
+    try {
+      // Sign out from Firebase
+      await FirebaseAuth.instance.signOut();
 
-    // Clear login state
-    await _saveLoginState(false);
+      // Sign out from Google
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      await googleSignIn.signOut();
 
-    emit(SignOutSuccess());
-  } catch (error) {
-    emit(const SignOutFailure('Something went wrong'));
+      // Clear login state
+      await _clearLoginState();
+
+      emit(SignOutSuccess());
+    } catch (error) {
+      emit(const SignOutFailure('Something went wrong'));
+    }
   }
-}
+
+  Future<void> _clearLoginState() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.remove('isLoggedIn');
+    } catch (error) {
+      throw ('Failed to clear login state: $error');
+    }
+  }
 
   Future<void> _saveLoginState(bool isLoggedIn) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

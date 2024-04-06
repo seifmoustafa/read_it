@@ -37,10 +37,9 @@ class LoginCubit extends Cubit<LoginState> {
         final UserCredential userCredential =
             await FirebaseAuth.instance.signInWithCredential(credential);
 
-        bool isFirstTimeGoogleSignIn =
-            await _checkFirstTimeGoogleSignIn(userCredential.user!);
+        bool userExists = await _checkUserExists(userCredential.user!.uid);
 
-        if (isFirstTimeGoogleSignIn) {
+        if (!userExists) {
           await saveUser(
             email: userCredential.user!.email!,
             userName: userCredential.user!.displayName!,
@@ -56,6 +55,21 @@ class LoginCubit extends Cubit<LoginState> {
     } catch (e) {
       log(e.toString());
       emit(LoginFailure(errMessage: 'Something went wrong'));
+    }
+  }
+
+  Future<bool> _checkUserExists(String uid) async {
+    try {
+      // Perform a query to check if the user with the given UID exists in Firestore
+      DocumentSnapshot userSnapshot =
+          await FirebaseFirestore.instance.collection('users').doc(uid).get();
+
+      // If the document exists, return true; otherwise, return false
+      return userSnapshot.exists;
+    } catch (e) {
+      // Handle errors gracefully, you might want to log or show an error message
+      log(e.toString());
+      return false;
     }
   }
 
