@@ -7,6 +7,8 @@ import 'package:read_it/core/widgets/custom_error_widget.dart';
 import 'package:read_it/core/widgets/custom_loading_indecator.dart';
 import 'package:read_it/features/home/presentation/views/widgets/popular_list_view_item.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
+import 'package:read_it/features/home/presentation/views/widgets/custom_book_image_loading_indicator.dart';
+import 'package:read_it/features/home/presentation/views/widgets/popular_books_list_view_loading_indicator.dart';
 
 class PopularListView extends StatefulWidget {
   const PopularListView({super.key});
@@ -102,7 +104,10 @@ class _PopularListViewState extends State<PopularListView> {
         } else if (state is PopularBooksFailure) {
           return CustomErrorWidget(errorMessage: state.errMessage);
         } else {
-          return const CustomLoadingIndecator();
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.26,
+            child: const CustomBookImageLoadingIndicator(),
+          );
         }
       },
     );
