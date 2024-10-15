@@ -48,6 +48,7 @@ dependencies:
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
   image_picker: ^1.0.7
+  listview_infinite_pagination: ^0.0.16
   modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.2.2
   sqflite: ^2.3.2

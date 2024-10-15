@@ -21,7 +21,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
     super.initState();
     _focusNode = FocusNode();
     // Request focus when the widget is first built
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(_focusNode);
     });
   }

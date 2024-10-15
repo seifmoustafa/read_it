@@ -14,7 +14,7 @@ class HomeViewBody extends StatelessWidget {
       canPop: false,
       child: Stack(
         children: [
-          CustomScrollView(slivers: [
+          CustomScrollView(physics: NeverScrollableScrollPhysics(), slivers: [
             SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

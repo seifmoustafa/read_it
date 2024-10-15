@@ -34,6 +34,7 @@ class _CustomPasswordFormTextFieldState
           if (data!.isEmpty) {
             return 'Field is required';
           }
+          return null;
         },
         onChanged: widget.onChanged,
         decoration: InputDecoration(
