@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/app_router.dart';
+import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/widgets/custom_error_widget.dart';
 import 'package:read_it/core/widgets/custom_loading_indecator.dart';
 import 'package:read_it/features/home/presentation/views/widgets/popular_list_view_item.dart';
@@ -47,17 +48,39 @@ class _PopularListViewState extends State<PopularListView> {
     super.dispose();
   }
 
+  List<BookModel> booksList = [];
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PopularBooksCubit, PopularBooksState>(
-      builder: (context, state) {
+    return BlocConsumer<PopularBooksCubit, PopularBooksState>(
+      listener: (context, state) {
         if (state is PopularBooksSuccess) {
+          booksList.addAll(state.books);
+        }
+        if (state is PopularBooksPaginationFaliure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.errMessage,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        if (state is PopularBooksSuccess ||
+            state is PopularBooksPaginationLoading ||
+            state is PopularBooksPaginationFaliure) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.26,
             child: ListView.builder(
               controller: _scrollController, // Attach the scroll controller
               scrollDirection: Axis.horizontal,
-              itemCount: state.books.length,
+              itemCount: booksList.length,
               itemBuilder: ((context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(left: 8),
@@ -66,10 +89,10 @@ class _PopularListViewState extends State<PopularListView> {
                       child: GestureDetector(
                         onTap: () {
                           GoRouter.of(context).push(AppRouter.kBookDetailsView,
-                              extra: state.books[index]);
+                              extra: booksList[index]);
                         },
                         child: PopularBookListViewItem(
-                          book: state.books[index],
+                          book: booksList[index],
                         ),
                       )),
                 );

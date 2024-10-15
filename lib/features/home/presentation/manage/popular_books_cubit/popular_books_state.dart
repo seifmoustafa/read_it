@@ -11,6 +11,14 @@ class PopularBooksInitial extends PopularBooksState {}
 
 class PopularBooksLoading extends PopularBooksState {}
 
+class PopularBooksPaginationLoading extends PopularBooksState {}
+
+class PopularBooksPaginationFaliure extends PopularBooksState {
+  final String errMessage;
+
+  PopularBooksPaginationFaliure({required this.errMessage});
+}
+
 class PopularBooksSuccess extends PopularBooksState {
   final List<BookModel> books;
 

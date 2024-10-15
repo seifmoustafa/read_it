@@ -11,10 +11,18 @@ class PopularBooksCubit extends Cubit<PopularBooksState> {
   final HomeRepo homeRepo;
 
   Future<void> fetchPopularBooks({int pageNumber = 0}) async {
-    emit(PopularBooksLoading());
+    if (pageNumber == 0) {
+      emit(PopularBooksLoading());
+    } else {
+      emit(PopularBooksPaginationLoading());
+    }
     var result = await homeRepo.fetchPopularBooks(pageNumber: pageNumber);
     result.fold((failure) {
-      emit(PopularBooksFailure(errMessage: failure.errMessage));
+      if (pageNumber == 0) {
+        emit(PopularBooksFailure(errMessage: failure.errMessage));
+      } else {
+        emit(PopularBooksPaginationFaliure(errMessage: failure.errMessage));
+      }
     }, (books) {
       emit(PopularBooksSuccess(books: books));
     });
