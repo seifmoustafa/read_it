@@ -4,7 +4,8 @@ import 'package:read_it/core/book_model/book_model.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
-  Future<Either<Failure, List<BookModel>>> fetchPopularBooks();
+  Future<Either<Failure, List<BookModel>>> fetchPopularBooks(
+      {int pageNumber = 0});
   Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
       {required String category});
 }

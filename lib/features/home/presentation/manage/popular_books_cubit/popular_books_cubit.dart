@@ -10,9 +10,9 @@ class PopularBooksCubit extends Cubit<PopularBooksState> {
 
   final HomeRepo homeRepo;
 
-  Future<void> fetchPopularBooks() async {
+  Future<void> fetchPopularBooks({int pageNumber = 0}) async {
     emit(PopularBooksLoading());
-    var result = await homeRepo.fetchPopularBooks();
+    var result = await homeRepo.fetchPopularBooks(pageNumber: pageNumber);
     result.fold((failure) {
       emit(PopularBooksFailure(errMessage: failure.errMessage));
     }, (books) {
