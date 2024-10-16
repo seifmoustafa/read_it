@@ -29,14 +29,13 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
   }
 
   void _onScroll() async {
-    var currentPosition = _scrollController.position.pixels;
-    var maxScrollLength = _scrollController.position.maxScrollExtent;
-    if (currentPosition >= maxScrollLength * 0.7) {
-      // Trigger the fetchNewestBooks() method when 70% of the list is scrolled
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent * 0.7) {
       if (!isLoading) {
         isLoading = true;
         await BlocProvider.of<NewestBooksCubit>(context)
             .fetchNewestBooks(pageNumber: nextPage++);
+        setState(() {});
         isLoading = false;
       }
     }
@@ -72,9 +71,11 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
             state is NewestBooksPaginationLoading ||
             state is NewestBooksPaginationFaliure) {
           return ListView.builder(
+            padding: EdgeInsets.zero,
             controller: _scrollController,
             shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+            physics:
+                const NeverScrollableScrollPhysics(), // Let the outer scroll handle scrolling
             itemCount: booksList.length,
             itemBuilder: (context, index) {
               return Padding(

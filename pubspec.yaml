@@ -53,6 +53,7 @@ dependencies:
   shared_preferences: ^2.2.2
   sqflite: ^2.3.2
   url_launcher: ^6.2.5
+  very_good_infinite_list: ^0.8.0
   webview_flutter: ^4.7.0
 
 dev_dependencies:
