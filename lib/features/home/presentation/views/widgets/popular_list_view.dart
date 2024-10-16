@@ -4,10 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/widgets/custom_error_widget.dart';
-import 'package:read_it/core/widgets/custom_loading_indecator.dart';
 import 'package:read_it/features/home/presentation/views/widgets/popular_list_view_item.dart';
 import 'package:read_it/features/home/presentation/manage/popular_books_cubit/popular_books_cubit.dart';
-import 'package:read_it/features/home/presentation/views/widgets/custom_book_image_loading_indicator.dart';
 import 'package:read_it/features/home/presentation/views/widgets/popular_books_list_view_loading_indicator.dart';
 
 class PopularListView extends StatefulWidget {
@@ -105,8 +103,8 @@ class _PopularListViewState extends State<PopularListView> {
           return CustomErrorWidget(errorMessage: state.errMessage);
         } else {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.26,
-            child: const CustomBookImageLoadingIndicator(),
+            height: MediaQuery.of(context).size.height * 0.16,
+            child: const PopularBooksListViewLoadingIndicator(),
           );
         }
       },
