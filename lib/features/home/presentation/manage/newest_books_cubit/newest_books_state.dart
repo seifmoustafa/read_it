@@ -11,6 +11,14 @@ class NewestBooksInitial extends NewestBooksState {}
 
 class NewestBooksLoading extends NewestBooksState {}
 
+class NewestBooksPaginationLoading extends NewestBooksState {}
+
+class NewestBooksPaginationFaliure extends NewestBooksState {
+  final String errMessage;
+
+  NewestBooksPaginationFaliure({required this.errMessage});
+}
+
 class NewestBooksSuccess extends NewestBooksState {
   final List<BookModel> books;
 
