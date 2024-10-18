@@ -16,7 +16,6 @@ class NewestSection extends StatelessWidget {
             'Newest',
             style: Styles.textStyle16,
           ),
-          NewestBooksListView()
         ],
       ),
     );
