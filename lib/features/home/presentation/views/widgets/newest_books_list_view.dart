@@ -4,8 +4,8 @@ import 'package:read_it/core/utils/app_router.dart';
 import 'package:read_it/core/book_model/book_model.dart';
 import 'package:read_it/core/widgets/custom_error_widget.dart';
 import 'package:read_it/core/widgets/books_list_view_item.dart';
-import 'package:read_it/core/widgets/custom_loading_indecator.dart';
 import 'package:read_it/features/home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
+import 'package:read_it/features/home/presentation/views/widgets/newest_books_list_view_loading_indicator.dart';
 
 class NewestBooksListView extends StatelessWidget {
   final NewestBooksState state;
@@ -24,6 +24,7 @@ class NewestBooksListView extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.only(
                 bottom: 16.0,
+                left: 16,
                 right: MediaQuery.of(context).size.width * .2,
               ),
               child: GestureDetector(
@@ -40,11 +41,11 @@ class NewestBooksListView extends StatelessWidget {
       );
     } else if (state is NewestBooksFailure) {
       return SliverToBoxAdapter(
-        child: CustomErrorWidget(errorMessage: state.toString()),
+        child: CustomErrorWidget(errorMessage: "Error"),
       );
     } else {
-      return const SliverToBoxAdapter(
-        child: CustomLoadingIndecator(),
+      return SliverToBoxAdapter(
+        child: NewestBooksListViewLoadingIndicator(),
       );
     }
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:read_it/core/utils/styles.dart';
-import 'package:read_it/features/home/presentation/views/widgets/newest_books_list_view.dart';
 
 class NewestSection extends StatelessWidget {
   const NewestSection({super.key});

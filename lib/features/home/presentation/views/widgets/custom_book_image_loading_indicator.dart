@@ -9,8 +9,11 @@ class CustomBookImageLoadingIndicator extends StatelessWidget {
       aspectRatio: 2.6 / 4,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
-        child: Container(
-          color: Colors.grey,
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Container(
+            color: Colors.grey,
+          ),
         ),
       ),
     );
